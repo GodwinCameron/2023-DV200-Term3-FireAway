@@ -1,5 +1,120 @@
+@import "../../styles.scss";
+
 .main{
-    background-color: red;
     width: 100%;
-    height: 16vh;
+    height: 19vh;
+
+    display: flex;
+    flex-direction: column;
+
+    .topSection{
+        width: 98vw;
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 2vw;
+        gap: 15vw;
+
+        .logo{
+            width: 12vw;
+            height: 7vh;
+        }
+
+        .searchBarArea{
+            margin-right: 7vw;
+            .searchBar{
+                width: 35vw;
+                height: 3vh;
+                padding-left: 20px;
+                outline: 0;
+                border: 1px solid rgb(172, 172, 172);
+                border-radius: 4px;
+
+                &:active{
+                    background-color: rgb(238, 238, 238);
+                }
+
+                &:focus{
+                    outline: 1px;
+                }
+            }
+        }
+
+        .searchBarWidgets{
+            width: 13vw;
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .navCartIcon{
+                transition: 500ms;
+                background-color: $palette-1;
+                max-height: 4vh;
+                min-height: 4vh;
+                width: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover{
+                    transition: 500ms;
+                    background-color: black;
+                    cursor: pointer;
+
+                    img{
+                        transition: 500ms;
+                        filter: invert(85%);
+                    }
+                }
+
+                img{
+                    scale: 70%;
+                    filter: invert(100%);
+                }
+            }
+            .cartItems{
+                border: 1px inset $palette-5;
+                width: 2vw;
+                height: 3.8vh;
+                display: flex;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                align-items: center;
+                justify-content: center;
+                font-size: 15px;
+                margin-right: 1vw;
+
+                &:hover{
+                    cursor: default;
+                }
+            }
+
+            .navProfileIcon{
+                background-color: $palette-5;
+                transition: 500ms;
+                max-height: 4vh;
+                min-height: 4vh;
+                width: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img{
+                    scale: 80%;
+                }
+
+                &:hover{
+                    transition: 500ms;
+                    background-color: black;
+                    cursor: pointer;
+
+                    img{
+                        transition: 500ms;
+                        filter: invert(100%);
+                    }
+                }
+            }
+        }
+    }
 }
