@@ -4,11 +4,9 @@
     user-select: none;
     width: 100%;
     height: 19vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     .topSection{
         width: 98vw;
         height: 10vh;
@@ -17,12 +15,10 @@
         align-items: center;
         padding-left: 2vw;
         gap: 15vw;
-
         .logo{
             width: 12vw;
             height: 7vh;
         }
-
         .searchBarArea{
             margin-right: 7vw;
             display: flex;
@@ -34,11 +30,10 @@
                 outline: 0;
                 border: 1px solid rgb(172, 172, 172);
                 border-radius: 4px;
-
+                font-family: 'Montserrat';
                 &:active{
                     background-color: rgb(238, 238, 238);
                 }
-
                 &:focus{
                     outline: 1px;
                 }
@@ -47,7 +42,6 @@
                 transition: 500ms;
                 scale: 75%;
                 margin-left: -1.5vw;
-
                 &:hover{
                     transition: 500ms;
                     filter: invert(90%);
@@ -60,14 +54,12 @@
                 }
             }
         }
-
         .searchBarWidgets{
             width: 13vw;
             height: 8vh;
             display: flex;
             align-items: center;
             justify-content: center;
-
             .navCartIcon{
                 transition: 500ms;
                 background-color: $palette-1;
@@ -77,18 +69,15 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
                 &:hover{
                     transition: 500ms;
                     background-color: black;
                     cursor: pointer;
-
                     img{
                         transition: 500ms;
                         filter: invert(85%);
                     }
                 }
-
                 img{
                     scale: 70%;
                     filter: invert(100%);
@@ -104,12 +93,10 @@
                 justify-content: center;
                 font-size: 15px;
                 margin-right: 1vw;
-
                 &:hover{
                     cursor: default;
                 }
             }
-
             .navProfileIcon{
                 background-color: $palette-5;
                 transition: 500ms;
@@ -119,16 +106,13 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
                 img{
                     scale: 80%;
                 }
-
                 &:hover{
                     transition: 500ms;
                     background-color: black;
                     cursor: pointer;
-
                     img{
                         transition: 500ms;
                         filter: invert(100%);
@@ -137,7 +121,6 @@
             }
         }
     }
-
     .bottomSection{
         width: 92vw;
         height: 9vh;
@@ -149,7 +132,6 @@
         border: 1px solid gray;
         border-width: 0;
         border-bottom-width: 1px;
-
         .navTab{
             width: 6vw;
             height: 6vh;
@@ -157,19 +139,18 @@
             align-items: center;
             justify-content: center;
             transition: 500ms;
-
+            font-family: 'Antonio';
+            text-transform: uppercase;
             &:hover{
                 transition: 500ms;
                 cursor: pointer;
                 transform: scale(1.2);
                 filter: none;
-
                 img{
                     transition: 500ms;
                     filter: none;
                 }
             }
-
             &:active{
                 transition: 10ms;
                 transform: scale(1);
