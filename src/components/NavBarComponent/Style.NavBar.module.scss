@@ -1,11 +1,13 @@
 @import "../../styles.scss";
 
 .main{
+    user-select: none;
     width: 100%;
     height: 19vh;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .topSection{
         width: 98vw;
@@ -23,6 +25,8 @@
 
         .searchBarArea{
             margin-right: 7vw;
+            display: flex;
+            flex-direction: row;
             .searchBar{
                 width: 35vw;
                 height: 3vh;
@@ -37,6 +41,22 @@
 
                 &:focus{
                     outline: 1px;
+                }
+            }
+            .searchIcon{
+                transition: 500ms;
+                scale: 75%;
+                margin-left: -1.5vw;
+
+                &:hover{
+                    transition: 500ms;
+                    filter: invert(90%);
+                    cursor: pointer;
+                    transform: scale(1.5);
+                }
+                &:active{
+                    transition: 10ms;
+                    filter: invert(1%);
                 }
             }
         }
@@ -115,6 +135,58 @@
                     }
                 }
             }
+        }
+    }
+
+    .bottomSection{
+        width: 92vw;
+        height: 9vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 4vw;
+        gap: 3vw;
+        border: 1px solid gray;
+        border-width: 0;
+        border-bottom-width: 1px;
+
+        .navTab{
+            width: 6vw;
+            height: 6vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 500ms;
+
+            &:hover{
+                transition: 500ms;
+                cursor: pointer;
+                transform: scale(1.2);
+                filter: none;
+
+                img{
+                    transition: 500ms;
+                    filter: none;
+                }
+            }
+
+            &:active{
+                transition: 10ms;
+                transform: scale(1);
+                filter: saturate(3);
+            }
+        }
+        .navHome{
+            img{
+                transition: 500ms;
+                scale: 70%;
+                filter: brightness(0);
+            }
+
+        }
+        .catagory{
+            color: $palette-1;
+            filter: brightness(0);
         }
     }
 }
