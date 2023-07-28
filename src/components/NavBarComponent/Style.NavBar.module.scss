@@ -18,6 +18,12 @@
         .logo{
             width: 12vw;
             height: 7vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                scale: 7%;
+            }
         }
         .searchBarArea{
             margin-right: 7vw;

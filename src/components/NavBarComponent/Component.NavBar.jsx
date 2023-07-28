@@ -5,12 +5,13 @@ import profileIcon from "../../assets/icons/profile.svg";
 import searchIcon from "../../assets/icons/magnifying-glass.svg";
 import homeIcon from "../../assets/icons/home.svg";
 import downIcon from "../../assets/icons/down-chevron.svg";
+import FAlogo from "../../assets/fireaway-logo.svg";
 
 const NavBarComponent = () => {
     return(<>
         <div className={style.main}>
             <div className={style.topSection}>
-                <div className={style.logo}></div>
+                <div className={style.logo}><img src={FAlogo}/></div>
                 <div className={style.searchBarArea}><input className={style.searchBar} placeholder="Search Keyword or Phrase"></input><img src={searchIcon} className={style.searchIcon} /></div>
                 <div className={style.searchBarWidgets}>
                     <div className={style.navCartIcon}><img src={cartIcon}/></div><div id="nav_cart_items" className={style.cartItems}>23</div>
