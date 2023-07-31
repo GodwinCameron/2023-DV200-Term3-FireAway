@@ -1,14 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import EXAMPLE from './components/EXAMPLECOMPONENT/Component.EXAMPLE';
-import NavBarComponent from './components/NavBarComponent/Component.NavBar';
-import ImageSlider from './components/ImageSliderComponent/Component.ImageSlider';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomeRoute from './routes/Home';
+import RiflesRoute from './routes/Rifles';
 
 function App() {
-  return (<>
-    <NavBarComponent />
-    <ImageSlider />
-    </>);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomeRoute/>}/>
+        <Route path="/rifles" element={<RiflesRoute/>}/>
+      </Routes>
+    </BrowserRouter>);
 }
 
 export default App;

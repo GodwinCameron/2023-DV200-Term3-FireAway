@@ -8,4 +8,13 @@ $palette-4: #A7A7A7;
 $palette-5: #c8c8c8;
 $palette-6: #DBDBDB;
 
+.product-area{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    padding: 2vh;
+}
+
 

@@ -6,6 +6,7 @@ import searchIcon from "../../assets/icons/magnifying-glass.svg";
 import homeIcon from "../../assets/icons/home.svg";
 import downIcon from "../../assets/icons/down-chevron.svg";
 import FAlogo from "../../assets/fireaway-logo.svg";
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 const NavBarComponent = () => {
     return(<>
@@ -19,8 +20,8 @@ const NavBarComponent = () => {
                 </div>
             </div>
             <div className={style.bottomSection}>
-                <div className={[style.navTab, style.navHome].join(' ')}><img src={homeIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Rifles<img src={downIcon} /></div>
+                <Link to="/"><div className={[style.navTab, style.navHome].join(' ')}><img src={homeIcon} /></div></Link>
+                <Link to="/rifles"><div className={[style.navTab, style.catagory].join(' ')}>Rifles<img src={downIcon} /></div></Link>
                 <div className={[style.navTab, style.catagory].join(' ')}>Pistols<img src={downIcon} /></div>
                 <div className={[style.navTab, style.catagory].join(' ')}>Shotguns<img src={downIcon} /></div>
                 <div className={[style.navTab, style.catagory].join(' ')}>Revolvers<img src={downIcon} /></div>
