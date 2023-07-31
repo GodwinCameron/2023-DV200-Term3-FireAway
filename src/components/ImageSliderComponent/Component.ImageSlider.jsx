@@ -6,6 +6,10 @@ const ImageSlider = () => {
     <>
       <div className={style.main}>
         <div className={style.dot}></div>
+        <div className={style.dot2}></div>
+        <div className={style.dot}></div>
+        <div className={style.dot}></div>
+        <div className={style.dot}></div>
         <div className={style.dot}></div>
         
       </div>

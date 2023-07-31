@@ -12,9 +12,16 @@ $palette-6: #DBDBDB;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 98%;
     height: fit-content;
     padding: 2vh;
 }
 
+.login-main{
+    width: 100%;
+    height: 100vh;
+}
+.login-block{
+    background-color: #ff7b0066;
+}
 

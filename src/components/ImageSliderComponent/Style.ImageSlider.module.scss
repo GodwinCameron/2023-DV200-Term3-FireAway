@@ -9,10 +9,30 @@
     justify-content: center;
     padding-bottom: 2vh;
     gap: 5px;
+    background-image: url("../../../Work/wp5408762-escape-from-tarkov-wallpapers.jpg");
+    background-position: 0px -120px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .dot{
+    &:hover{
+        transition: 100ms;
+        transform: scale(2);
+        cursor: pointer;
+    }
     width: 10px;
     height: 10px;
-    background-color: grey;
+    background-color: white;
+    border-radius: 50%;
+}
+.dot2{
+    &:hover{
+        transition: 100ms;
+        transform: scale(2);
+        cursor: pointer;
+    }
+    width: 10px;
+    height: 10px;
+    background-color: rgb(139, 139, 139);
     border-radius: 50%;
 }
