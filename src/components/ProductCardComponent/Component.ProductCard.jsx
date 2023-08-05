@@ -18,3 +18,6 @@ const ProductCardComponent = () => {
 }
 
 export default ProductCardComponent;
+
+// TODO: Fix styling of text and prices
+// TODO: Add trunkated description on items.
