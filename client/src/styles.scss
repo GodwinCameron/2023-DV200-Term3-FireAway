@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Antonio");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=DM+Sans");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 
 $palette-1: #ff7a00;
 $palette-2: #ff7b0099;
@@ -25,3 +29,13 @@ $palette-6: #DBDBDB;
     background-color: #ff7b0066;
 }
 
+::-webkit-scrollbar{
+    background-color: rgba(0,0,0,0);
+    box-shadow: 12px 0px 19px -11px rgba(0,0,0,0.75) inset;
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $palette-1;
+    border-radius: 4px;
+  }

@@ -4,6 +4,7 @@
 *{
     padding: 0;
     margin: 0;
+    
 }
 .main{
     width: 100%;
@@ -15,11 +16,14 @@
     font-size: 35px;
     gap: 2vh;
 
+    
+
     .barHolder{
         display: flex;
         width: 100%;
         height: 18vh;
         justify-content: center;
+        
 
         .tab{
             height: 100%;
@@ -62,12 +66,13 @@
                     transition: 350ms;
                     filter: invert(100%);
                 }
-            }
-
+            } 
             
-            .lastTab{
-                border: 1px solid gray;
-            }
+        }
+        .lastTab{
+            border-right-width: 1px;
         }
     }
 }
+
+
