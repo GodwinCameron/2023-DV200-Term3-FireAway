@@ -1,5 +1,9 @@
 import React from "react";
 import style from "./Style.ProductCard.module.scss";
+import cartIcon from "../../assets/icons/cart.svg";
+import heartIcon from "../../assets/icons/heart.svg";
+import listIcon from "../../assets/icons/list.svg";
+import { Link } from "react-router-dom";
 
 const ProductCardComponent = () => {
 
@@ -7,21 +11,21 @@ const ProductCardComponent = () => {
   
 
   return (
-    <>
+    <Link className={style.noTextDec} to='/product'>
       <div className={style.main}>
         <div className={style.image}></div>
         <div className={style.productTitle}>Assault Rifle</div>
         <div className={style.productPrice}>R<span id="numberDisplay">{formattedNumber}.00</span></div>
-        <div className={style.productDescription}><span className={style.truncated}>Good gun, yes go buy now! go pew pew, yes yes nice!</span>
+        <div className={style.productDescription}>Good gun, yes go buy now! go pew pew, yes yes nice!
           
         </div>
         <div className={style.buttonArea}>
-          <div className={style.button}></div>
-          <div className={style.button}></div>
-          <div className={style.button}></div>
+          <div className={[style.button, style.cartBtn].join(' ')}><img src={cartIcon}/></div>
+          <div className={[style.button, style.heartBtn].join(' ')}><img src={heartIcon}/></div>
+          <div className={[style.button, style.compareBtn].join(' ')}><img src={listIcon}/></div>
         </div>
       </div>
-    </>
+      </Link>
   );
 };
 

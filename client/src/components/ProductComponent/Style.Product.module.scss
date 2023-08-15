@@ -1,0 +1,38 @@
+@import "../../styles.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    background-color: yellowgreen;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    .leftCol{
+        width: 50%;
+        height: 65vh;
+        background-color: blue;
+        padding-top: 4vh;
+        padding-left: 4vh;
+        .productImage{
+            width: 100%;
+            height: 80%;
+            background-color: greenyellow;
+        }
+        .smallText{
+            width: 100%;
+            height: 20%;
+            background-color: orangered;
+        }
+    }
+    .rightCol{
+        width: 50%;
+        height: 65vh;
+        padding-top: 4vh;
+        padding-right: 4vh;
+        background-color: red;
+    }
+}

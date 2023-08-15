@@ -1,4 +1,8 @@
 @import "../../styles.scss";
+.noTextDec{
+    text-decoration: none;
+    color: black;
+}
 .main{
     transition: 300ms;
     display: flex;
@@ -41,34 +45,18 @@
         width: 75%;
     }
     .productDescription{
-        background-color: orangered;
         // font-family: 'Roboto Condensed';
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 15px;
+        font-size: 12px;
         margin-top: 4px;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        width: 30px;
+        width: 75%;
         max-width: 75%;
-        white-space: nowrap;
+        // white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis !important;
-        .truncated{
-            background-color: greenyellow;
-            // font-family: 'Roboto Condensed';
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            margin-top: 4px;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            width: 12px;
-            max-width: 75%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis !important;
-        }
     }
     .buttonArea{
         display: flex;
@@ -82,7 +70,27 @@
             display: flex;
             height: 40px;
             width: 40px;
-            background-color: grey;
+            background-color: $palette-6;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                transition: 200ms;
+                background-color: gray;
+                transform: scale(0.8);
+            }
+        }
+        .cartBtn{
+            background-color: $palette-1;
+            img{
+                scale: 0.8;
+                filter: invert(100);
+            }
+        }
+        .heartBtn{
+            img{
+                scale: 1.2;
+            }
         }
     }
 }
