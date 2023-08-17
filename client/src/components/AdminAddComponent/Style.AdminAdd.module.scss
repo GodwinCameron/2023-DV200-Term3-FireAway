@@ -20,6 +20,7 @@
     padding: 1vh;
     flex-direction: column;
     overflow: hidden;
+    transition: all 500ms;
 
     h3{
         &:hover{

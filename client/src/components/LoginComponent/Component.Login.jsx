@@ -1,75 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Style.Login.module.scss";
 import axios from "axios";
 
-
 const LoginComponent = () => {
+  const [email, setEmail] = useState('');
 
-    const CreateUser = async (e) => {
-        e.preventDefault();
+  const CreateUser = async (e) => {
+    e.preventDefault();
 
+    // For debugging:
+    var user = {
+      name: document.getElementById("name").value,
+      surname: document.getElementById("surname").value,
+      email: document.getElementById("email").value,
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
+    };
+    console.log(user);
 
-        // For debugging:
-        var user = {
-            name: document.getElementById("name").value,
-            surname: document.getElementById("surname").value,
-            email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-        }
-        console.log(user);
+    const userInfo = {
+      name: document.getElementById("name").value,
+      surname: document.getElementById("surname").value,
+      email: document.getElementById("email").value,
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
+    };
 
+    try {
+      const response = await axios.post("/api/auth", userInfo);
+      const { token } = response.data;
 
-
-        const userInfo = {
-            name: document.getElementById("name").value,
-            surname: document.getElementById("surname").value,
-            email: document.getElementById("email").value,
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-        }
-
-        try{
-            const response = await axios.post('/api/auth', userInfo);
-            const { token } = response.data;
-
-            localStorage.setItem('JWT', token);
-        } catch (error) {
-            console.error('Authentication Error: ', error);
-        }
+      localStorage.setItem("JWT", token);
+    } catch (error) {
+      console.error("Authentication Error: ", error);
     }
+  };
 
+  const testUser = () => {
+    const ActiveJWT = localStorage.getItem("JWT");
+    console.log("tested user with token: ", ActiveJWT);
+  };
 
+  const loginHandler = (event) => {
+    event.preventDefault();
+    // call server to login
+    // try {
+    //   const response = axios.post("/api/auth", {
+    //     username: document.getElementById("username").value,
+    //     password: document.getElementById("password").value,
+    //   });
+    //   const { token } = response.data;
+    //   localStorage.setItem("JWT", token);
+    // } catch (error) {
+    //   console.error("Authentication Error: ", error);
+    // }
+    console.log(email);
+  };
 
-    const testUser = () => {
-        const ActiveJWT = localStorage.getItem("JWT");
-        console.log("tested user with token: ", ActiveJWT);
-    }
-
-
-    return(<>
-        <div className={style.main}>
-            <div className={style.block}>
-                <h1>Welcome to FireAway!</h1>
-                <h3>Sign up below!</h3>
-                <input id="name" className={style.input} placeholder="Name"></input>
-                <input id="surname" className={style.input} placeholder="Surname"></input>
-                <input id="email" className={style.input} placeholder="email"></input>
-                <input id="username" className={style.input} placeholder="username"></input>
-                <input type="password" id="password" className={style.input} placeholder="passowrd"></input>
-                <div onClick={CreateUser} className={style.button}>Sign Up!</div>
-                <p className={style.signIn}>Already have an account?<span className={style.underline}> Sign In Here!</span></p>
-            </div>
-            <div onClick={testUser} className={style.test}>Test Token</div>
-        </div>
-    </>)
-}
+  return (
+    <>
+      <div className={style.main}>
+        <form className={style.block} onSubmit={loginHandler}>
+          <h1>Welcome to FireAway!</h1>
+          <h3>Sign up below!</h3>
+          <input id="name" className={style.input} placeholder="Name"></input>
+          <input
+            id="surname"
+            className={style.input}
+            placeholder="Surname"
+          ></input>
+          <input
+            id="email"
+            className={style.input}
+            placeholder="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          ></input>
+          <input
+            id="username"
+            className={style.input}
+            placeholder="username"
+          ></input>
+          <input
+            type="password"
+            id="password"
+            className={style.input}
+            placeholder="passowrd"
+          ></input>
+          <button className={style.button}>
+            Sign Up!
+          </button>
+          <p className={style.signIn}>
+            Already have an account?
+            <span className={style.underline}> Sign In Here!</span>
+          </p>
+        </form>
+        <div className={style.test}>Test Token</div>
+      </div>
+    </>
+  );
+};
 
 export default LoginComponent;
-
-
-
-
 
 // STUFF HERE GOES IN SERVER FOLDER FOR THE BACKEND MANAGEMENT OF THE JWT ==================================
 // =========================================================================================================
@@ -81,12 +113,6 @@ export default LoginComponent;
 // const token = jwt.sign(user, secretKey, { expiresIn: '1h' });
 
 // res.json({ token });
-
-
-
-
-
-
 
 // STUFF HERE GOES IN CLIENT FOLDER FOR THE FRONTEND MANAGEMENT OF THE JWT =================================
 // =========================================================================================================
@@ -108,13 +134,6 @@ export default LoginComponent;
 //     console.error('Authentication failed', error);
 //   }
 // };
-
-
-
-
-
-
-
 
 // STUFF HERE MANAGEST REQUESTS USING THE JWT  =============================================================
 // =========================================================================================================

@@ -2,6 +2,12 @@ import React from "react";
 import style from "./Style.Product.module.scss";
 
 const Product = () => {
+
+
+    
+
+
+
     return(<>
         <div className={style.main}>
             <div className={style.leftCol}>
@@ -9,6 +15,8 @@ const Product = () => {
                 <div className={style.smallText}></div>
             </div>
             <div className={style.rightCol}></div>
+            {/* create new button */}
+
         </div>
     </>)
 }
