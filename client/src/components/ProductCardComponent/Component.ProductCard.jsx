@@ -5,17 +5,19 @@ import heartIcon from "../../assets/icons/heart.svg";
 import listIcon from "../../assets/icons/list.svg";
 import { Link } from "react-router-dom";
 
-const ProductCardComponent = () => {
+const ProductCardComponent = (props) => {
 
-  var formattedNumber = parseInt(36000).toLocaleString();
+  // console.log(props.product);
+
+  var formattedPrice = parseInt(36000).toLocaleString();
   
 
   return (
     <Link className={style.noTextDec} to='/product'>
       <div className={style.main}>
         <div className={style.image}></div>
-        <div className={style.productTitle}>Assault Rifle</div>
-        <div className={style.productPrice}>R<span id="numberDisplay">{formattedNumber}.00</span></div>
+        <div className={style.productTitle}>{props.productData.make} {props.productData.model}</div>
+        <div className={style.productPrice}>R<span id="numberDisplay">{formattedPrice}.00</span></div>
         <div className={style.productDescription}>Good gun, yes go buy now! go pew pew, yes yes nice!
           
         </div>

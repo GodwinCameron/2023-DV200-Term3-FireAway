@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Style.NavBar.module.scss";
+import adminIcon from "../../assets/icons/admin.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 import profileIcon from "../../assets/icons/profile.svg";
 import searchIcon from "../../assets/icons/magnifying-glass.svg";
@@ -15,6 +16,7 @@ const NavBarComponent = () => {
                 <div className={style.logo}><img src={FAlogo}/></div>
                 <div className={style.searchBarArea}><input className={style.searchBar} placeholder="Search Keyword or Phrase"></input><img src={searchIcon} className={style.searchIcon} /></div>
                 <div className={style.searchBarWidgets}>
+                    <Link to="/admin"><div className={style.navAdminIcon}><img src={adminIcon}/></div></Link>
                     <div className={style.navCartIcon}><img src={cartIcon}/></div><div id="nav_cart_items" className={style.cartItems}>23</div>
                     <div className={style.navProfileIcon}><img src={profileIcon}/></div>
                 </div>

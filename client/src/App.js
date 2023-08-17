@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeRoute from './routes/Home/Home';
-import RiflesRoute from './routes/Rifles';
+import RiflesRoute from './routes/Rifles/Rifles';
 import LoginRoute from './routes/Login/Login';
 import Admin from './routes/Admin/Admin';
 import IndividualProduct from './routes/Single Product/IndividualProduct';

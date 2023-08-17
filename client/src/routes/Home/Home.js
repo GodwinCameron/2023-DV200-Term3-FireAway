@@ -16,7 +16,6 @@ const HomeRoute = () => {
     return(<>
         <NavBarComponent />
         <ImageSlider />
-        {/* TODO: Complete Secondary nav - create and add icons */}
         <SecondaryNav />
         <ImageMenu />
         <FooterComponent />
