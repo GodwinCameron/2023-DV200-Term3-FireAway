@@ -53,10 +53,12 @@ const NavBarComponent = () => {
               <img alt="" src={downIcon} />
             </div>
           </Link>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Pistols
-            <img alt="" src={downIcon} />
-          </div>
+          <Link to="/pistols">
+            <div className={[style.navTab, style.catagory].join(" ")}>
+              Pistols
+              <img alt="" src={downIcon} />
+            </div>
+          </Link>
           <div className={[style.navTab, style.catagory].join(" ")}>
             Shotguns
             <img alt="" src={downIcon} />

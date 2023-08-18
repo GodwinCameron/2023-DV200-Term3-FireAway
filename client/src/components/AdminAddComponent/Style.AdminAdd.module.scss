@@ -40,7 +40,7 @@
         padding-left: 0.6vw;
         height: 2.5vh;
         font-family: monospace;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         margin-bottom: 10px;
         &::placeholder{
             font-family: 'DM Sans';
@@ -51,6 +51,26 @@
             outline: 1px solid blue;
             background-color: rgb(219, 219, 243);
         }
+    }
+
+    .button{
+        background-color: #0652DD;
+        border: 0;
+        cursor: pointer;
+        height: 30px;
+        border-radius: 6px;
+        width: 120px;
+        color: white;
+        &:hover{
+            background-color: #258def;
+        }
+        &:active{
+            background-color: #d6deed;
+        }
+    }
+    .addedAlert{
+        display: none;
+        color: rgb(24, 224, 10);
     }
 }
 
