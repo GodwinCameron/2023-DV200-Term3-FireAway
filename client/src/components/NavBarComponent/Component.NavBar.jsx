@@ -7,36 +7,88 @@ import searchIcon from "../../assets/icons/magnifying-glass.svg";
 import homeIcon from "../../assets/icons/home.svg";
 import downIcon from "../../assets/icons/down-chevron.svg";
 import FAlogo from "../../assets/fireaway-logo.svg";
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const NavBarComponent = () => {
-    return(<>
-        <div className={style.main}>
-            <div className={style.topSection}>
-                <div className={style.logo}><img src={FAlogo}/></div>
-                <div className={style.searchBarArea}><input className={style.searchBar} placeholder="Search Keyword or Phrase"></input><img src={searchIcon} className={style.searchIcon} /></div>
-                <div className={style.searchBarWidgets}>
-                    <Link to="/admin"><div className={style.navAdminIcon}><img src={adminIcon}/></div></Link>
-                    <div className={style.navCartIcon}><img src={cartIcon}/></div><div id="nav_cart_items" className={style.cartItems}>23</div>
-                    <div className={style.navProfileIcon}><img src={profileIcon}/></div>
-                </div>
+  return (
+    <>
+      <div className={style.main}>
+        <div className={style.topSection}>
+          <div className={style.logo}>
+            <img alt="" src={FAlogo} />
+          </div>
+          <div className={style.searchBarArea}>
+            <input
+              className={style.searchBar}
+              placeholder="Search Keyword or Phrase"
+            ></input>
+            <img alt="" src={searchIcon} className={style.searchIcon} />
+          </div>
+          <div className={style.searchBarWidgets}>
+            <Link to="/admin">
+              <div className={style.navAdminIcon}>
+                <img alt="" src={adminIcon} />
+              </div>
+            </Link>
+            <div className={style.navCartIcon}>
+              <img alt="" src={cartIcon} />
             </div>
-            <div className={style.bottomSection}>
-                <Link to="/"><div className={[style.navTab, style.navHome].join(' ')}><img src={homeIcon} /></div></Link>
-                <Link to="/rifles"><div className={[style.navTab, style.catagory].join(' ')}>Rifles<img src={downIcon} /></div></Link>
-                <div className={[style.navTab, style.catagory].join(' ')}>Pistols<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Shotguns<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Revolvers<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Full Auto<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Semi-Auto<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Special Action<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Attachments<img src={downIcon} /></div>
-                <div className={[style.navTab, style.catagory].join(' ')}>Ammunition<img src={downIcon} /></div>
-
-
+            <div id="nav_cart_items" className={style.cartItems}>
+              23
             </div>
+            <div className={style.navProfileIcon}>
+              <img alt="" src={profileIcon} />
+            </div>
+          </div>
         </div>
-    </>)
-}
+        <div className={style.bottomSection}>
+          <Link to="/">
+            <div className={[style.navTab, style.navHome].join(" ")}>
+              <img alt="" src={homeIcon} />
+            </div>
+          </Link>
+          <Link to="/rifles">
+            <div className={[style.navTab, style.catagory].join(" ")}>
+              Rifles
+              <img alt="" src={downIcon} />
+            </div>
+          </Link>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Pistols
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Shotguns
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Revolvers
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Full Auto
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Semi-Auto
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Special Action
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Attachments
+            <img alt="" src={downIcon} />
+          </div>
+          <div className={[style.navTab, style.catagory].join(" ")}>
+            Ammunition
+            <img alt="" src={downIcon} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default NavBarComponent;

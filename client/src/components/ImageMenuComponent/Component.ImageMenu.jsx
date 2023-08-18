@@ -6,17 +6,17 @@ const ImageMenu = () => {
     return(<>
         <div className={style.main}>
             <div className={style.topRow}>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
 
             </div>
             <div className={style.bottomRow}>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
-                <div className={style.imageBlock}><img src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
+                <div className={style.imageBlock}><img alt="" src={testImage}/></div>
             </div>
         </div>
     </>)

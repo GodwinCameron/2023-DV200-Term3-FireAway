@@ -5,7 +5,7 @@ import logo from "../../assets/fireaway-logo.svg";
 const FooterComponent = () => {
     return(<>
         <div className={style.main}>
-            <div className={style.logo}><img src={logo}/></div>
+            <div className={style.logo}><img alt="" src={logo}/></div>
         </div>
     </>)
 }

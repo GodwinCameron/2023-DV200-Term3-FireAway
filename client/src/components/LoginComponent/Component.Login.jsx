@@ -1,45 +1,45 @@
 import React, { useState } from "react";
 import style from "./Style.Login.module.scss";
-import axios from "axios";
+// import axios from "axios";
 
 const LoginComponent = () => {
   const [email, setEmail] = useState('');
 
-  const CreateUser = async (e) => {
-    e.preventDefault();
+  // const CreateUser = async (e) => {
+  //   e.preventDefault();
 
-    // For debugging:
-    var user = {
-      name: document.getElementById("name").value,
-      surname: document.getElementById("surname").value,
-      email: document.getElementById("email").value,
-      username: document.getElementById("username").value,
-      password: document.getElementById("password").value,
-    };
-    console.log(user);
+  //   // For debugging:
+  //   var user = {
+  //     name: document.getElementById("name").value,
+  //     surname: document.getElementById("surname").value,
+  //     email: document.getElementById("email").value,
+  //     username: document.getElementById("username").value,
+  //     password: document.getElementById("password").value,
+  //   };
+  //   console.log(user);
 
-    const userInfo = {
-      name: document.getElementById("name").value,
-      surname: document.getElementById("surname").value,
-      email: document.getElementById("email").value,
-      username: document.getElementById("username").value,
-      password: document.getElementById("password").value,
-    };
+  //   const userInfo = {
+  //     name: document.getElementById("name").value,
+  //     surname: document.getElementById("surname").value,
+  //     email: document.getElementById("email").value,
+  //     username: document.getElementById("username").value,
+  //     password: document.getElementById("password").value,
+  //   };
 
-    try {
-      const response = await axios.post("/api/auth", userInfo);
-      const { token } = response.data;
+  //   try {
+  //     const response = await axios.post("/api/auth", userInfo);
+  //     const { token } = response.data;
 
-      localStorage.setItem("JWT", token);
-    } catch (error) {
-      console.error("Authentication Error: ", error);
-    }
-  };
+  //     localStorage.setItem("JWT", token);
+  //   } catch (error) {
+  //     console.error("Authentication Error: ", error);
+  //   }
+  // };
 
-  const testUser = () => {
-    const ActiveJWT = localStorage.getItem("JWT");
-    console.log("tested user with token: ", ActiveJWT);
-  };
+  // const testUser = () => {
+  //   const ActiveJWT = localStorage.getItem("JWT");
+  //   console.log("tested user with token: ", ActiveJWT);
+  // };
 
   const loginHandler = (event) => {
     event.preventDefault();
