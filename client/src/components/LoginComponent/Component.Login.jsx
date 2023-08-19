@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import style from "./Style.Login.module.scss";
-// import axios from "axios";
+import axios from "axios";
 
 const LoginComponent = () => {
   const [email, setEmail] = useState('');
 
-  // const CreateUser = async (e) => {
-  //   e.preventDefault();
+  const CreateUser = async (e) => {
+    e.preventDefault();
+    const userInfo = {
+      name: document.getElementById("name").value,
+      surname: document.getElementById("surname").value,
+      username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+    };
+    console.log(userInfo);
+    try {
+      axios.post("http://localhost:5000/api/register", userInfo);
+    } catch (error) {
+      console.error("Register Error: ", error);
+    }
+  };
+
 
   //   // For debugging:
   //   var user = {
@@ -41,26 +56,26 @@ const LoginComponent = () => {
   //   console.log("tested user with token: ", ActiveJWT);
   // };
 
-  const loginHandler = (event) => {
-    event.preventDefault();
+  // const loginHandler = (event) => {
+  //   event.preventDefault();
     // call server to login
-    // try {
-    //   const response = axios.post("/api/auth", {
-    //     username: document.getElementById("username").value,
-    //     password: document.getElementById("password").value,
-    //   });
-    //   const { token } = response.data;
-    //   localStorage.setItem("JWT", token);
-    // } catch (error) {
-    //   console.error("Authentication Error: ", error);
-    // }
-    console.log(email);
-  };
+  //   try {
+  //     const response = axios.post("/api/login", {
+  //       username: document.getElementById("username").value,
+  //       password: document.getElementById("password").value,
+  //     });
+  //     const { token } = response.data;
+  //     localStorage.setItem("JWT", token);
+  //   } catch (error) {
+  //     console.error("Authentication Error: ", error);
+  //   }
+  //   console.log(email);
+  // };
 
   return (
     <>
       <div className={style.main}>
-        <form className={style.block} onSubmit={loginHandler}>
+        <form className={style.block} onSubmit={CreateUser}>
           <h1>Welcome to FireAway!</h1>
           <h3>Sign up below!</h3>
           <input id="name" className={style.input} placeholder="Name"></input>
@@ -95,7 +110,6 @@ const LoginComponent = () => {
             <span className={style.underline}> Sign In Here!</span>
           </p>
         </form>
-        <div className={style.test}>Test Token</div>
       </div>
     </>
   );

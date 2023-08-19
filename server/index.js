@@ -9,7 +9,6 @@ require('dotenv/config')
 
 const app = express()
 
-// used with react
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
