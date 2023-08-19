@@ -6,6 +6,7 @@ import RegisterRoute from './routes/Register/Register';
 import Admin from './routes/Admin/Admin';
 import IndividualProduct from './routes/Single Product/IndividualProduct';
 import PistolsRoute from './routes/Pistols/Pistols';
+import LoginRoute from './routes/Login/Login';
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
         <Route path="/rifles" element={<RiflesRoute/>}/>
         <Route path="/pistols" element={<PistolsRoute/>}/>
         <Route path="/register" element={<RegisterRoute/>}/>
+        <Route path="/login" element={<LoginRoute/>}/>
         <Route path="/admin" element={<Admin />}/>
         <Route path="/product" element={<IndividualProduct />}/>
-        
       </Routes>
     </BrowserRouter>);
 }

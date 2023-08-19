@@ -1,8 +1,9 @@
 const express = require('express')
-const jst = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const UserSchema = require('../models/users')
 const router = express()
 require('dotenv/config')
+const secretKey = process.env.SECRET_KEY
 
 //Add a User
 router.post('/api/addUser/', async (req, res) => {
@@ -22,12 +23,12 @@ router.get('/api/getUsers/', async (req, res) => {
 router.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     try {
-      const user = await User.findOne({ username, password });
+      const user = await UserSchema.findOne({ username, password });
       if (!user) {
         return res.status(401).json({ message: 'Authentication failed' });
       }
   
-      const token = jwt.sign({ userId: user._id }, 'your-secret-key', { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '1h' });
       res.json({ token });
     } catch (error) {
       console.error('Error during login', error);

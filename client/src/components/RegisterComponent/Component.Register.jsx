@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import style from "./Style.Register.module.scss";
 import axios from "axios";
+import { useNavigate } from 'react-router';
+
 
 const RegisterComponent = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
   const CreateUser = async (e) => {
@@ -16,11 +19,14 @@ const RegisterComponent = () => {
     };
     console.log(userInfo);
 
-    // // Check for user in database - backend
+    const ToLogin = () => {
+      navigate('/login?registered=true');
+    };
+
+    // Check for user in database - backend
     axios
       .get("http://localhost:5000/api/getUser/" + userInfo.username)
       .then((response) => {
-        console.log(response.data);
         if (response.data !== null) {
           alert("Username already exists");
         } else {
@@ -28,8 +34,8 @@ const RegisterComponent = () => {
           try {
             axios.post("http://localhost:5000/api/register", userInfo)
             .then(() => {
-              alert("User created!");
-              window.location.href = "/login";
+              document.getElementsByClassName(style.message)[0].style.display = "flex";
+              setTimeout(ToLogin, 1500);
             })
           } catch (error) {
             console.error("Register Error: ", error);
@@ -41,69 +47,7 @@ const RegisterComponent = () => {
         console.log(error);
       });
 
-    // // Check for user in database - frontend, to bypass react error handling
-    // try {
-    //   axios.get("http://localhost:5000/api/getUser", userInfo)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // } catch (error) {
-    //   console.error("Register Error: ", error);
-    //   console.log(error);
-    // }
   };
-
-  //   // For debugging:
-  //   var user = {
-  //     name: document.getElementById("name").value,
-  //     surname: document.getElementById("surname").value,
-  //     email: document.getElementById("email").value,
-  //     username: document.getElementById("username").value,
-  //     password: document.getElementById("password").value,
-  //   };
-  //   console.log(user);
-
-  //   const userInfo = {
-  //     name: document.getElementById("name").value,
-  //     surname: document.getElementById("surname").value,
-  //     email: document.getElementById("email").value,
-  //     username: document.getElementById("username").value,
-  //     password: document.getElementById("password").value,
-  //   };
-
-  //   try {
-  //     const response = await axios.post("/api/auth", userInfo);
-  //     const { token } = response.data;
-
-  //     localStorage.setItem("JWT", token);
-  //   } catch (error) {
-  //     console.error("Authentication Error: ", error);
-  //   }
-  // };
-
-  // const testUser = () => {
-  //   const ActiveJWT = localStorage.getItem("JWT");
-  //   console.log("tested user with token: ", ActiveJWT);
-  // };
-
-  // const loginHandler = (event) => {
-  //   event.preventDefault();
-  // call server to login
-  //   try {
-  //     const response = axios.post("/api/login", {
-  //       username: document.getElementById("username").value,
-  //       password: document.getElementById("password").value,
-  //     });
-  //     const { token } = response.data;
-  //     localStorage.setItem("JWT", token);
-  //   } catch (error) {
-  //     console.error("Authentication Error: ", error);
-  //   }
-  //   console.log(email);
-  // };
 
   return (
     <>
@@ -141,6 +85,7 @@ const RegisterComponent = () => {
             <span className={style.underline}> Sign In Here!</span>
           </p>
         </form>
+        <div className={style.message}>User Successfully Created! Proceeding to Sign in</div>
       </div>
     </>
   );

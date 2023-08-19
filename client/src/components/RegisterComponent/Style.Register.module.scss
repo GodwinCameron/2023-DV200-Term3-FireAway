@@ -12,6 +12,17 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    flex-direction: column;
+
+    .message{
+        color: rgb(15, 212, 15);
+        padding: 1vh;
+        border: 1px solid rgb(15, 212, 15);
+        margin-top: 20px;
+        background-color: rgba(15, 212, 15,0.18);
+        border-radius: 6px;
+        display: none;
+    }
 
     .block{
         background-color: $palette-1;
