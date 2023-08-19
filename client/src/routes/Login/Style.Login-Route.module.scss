@@ -23,6 +23,15 @@ body{
     background-color: rgba(15, 212, 15,0.18);
     border-radius: 6px;
 }
+.message2{
+    color: rgb(15, 212, 15);
+    padding: 0.5vh;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+    margin-top: 20px;
+    background-color: rgba(15, 212, 15,0);
+    border-radius: 6px;
+}
 
 .loginForm{
     height: 15vh;
@@ -62,3 +71,19 @@ body{
     }
 }
 
+.reg{
+    color: $palette-1;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+        color: $palette-3;
+    }
+}
+.noLogin{
+    color: $palette-1;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+        color: $palette-3;
+    }
+}
