@@ -55,5 +55,13 @@ router.post('/api/register', async (req, res) => {
     }
   });
 
+// find one user by username
+router.get('/api/getUser/:username', async (req, res) => {
+    const username = req.params.username;
+    const findUser = await UserSchema.findOne({username});
+    res.json(findUser)
+}); 
+
+
 
 module.exports = router;

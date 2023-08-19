@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import style from "./Style.Login.module.scss";
+import style from "./Style.Register.module.scss";
 import axios from "axios";
 
-const LoginComponent = () => {
-  const [email, setEmail] = useState('');
+const RegisterComponent = () => {
+  const [email, setEmail] = useState("");
 
   const CreateUser = async (e) => {
     e.preventDefault();
@@ -15,13 +15,46 @@ const LoginComponent = () => {
       password: document.getElementById("password").value,
     };
     console.log(userInfo);
-    try {
-      axios.post("http://localhost:5000/api/register", userInfo);
-    } catch (error) {
-      console.error("Register Error: ", error);
-    }
-  };
 
+    // // Check for user in database - backend
+    axios
+      .get("http://localhost:5000/api/getUser/" + userInfo.username)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data !== null) {
+          alert("Username already exists");
+        } else {
+          console.log("User does not exist, creating user");
+          try {
+            axios.post("http://localhost:5000/api/register", userInfo)
+            .then(() => {
+              alert("User created!");
+              window.location.href = "/login";
+            })
+          } catch (error) {
+            console.error("Register Error: ", error);
+            console.log(error);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // // Check for user in database - frontend, to bypass react error handling
+    // try {
+    //   axios.get("http://localhost:5000/api/getUser", userInfo)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // } catch (error) {
+    //   console.error("Register Error: ", error);
+    //   console.log(error);
+    // }
+  };
 
   //   // For debugging:
   //   var user = {
@@ -58,7 +91,7 @@ const LoginComponent = () => {
 
   // const loginHandler = (event) => {
   //   event.preventDefault();
-    // call server to login
+  // call server to login
   //   try {
   //     const response = axios.post("/api/login", {
   //       username: document.getElementById("username").value,
@@ -102,9 +135,7 @@ const LoginComponent = () => {
             className={style.input}
             placeholder="passowrd"
           ></input>
-          <button className={style.button}>
-            Sign Up!
-          </button>
+          <button className={style.button}>Sign Up!</button>
           <p className={style.signIn}>
             Already have an account?
             <span className={style.underline}> Sign In Here!</span>
@@ -115,7 +146,7 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default RegisterComponent;
 
 // STUFF HERE GOES IN SERVER FOLDER FOR THE BACKEND MANAGEMENT OF THE JWT ==================================
 // =========================================================================================================
