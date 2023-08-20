@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import style from "./Style.Register.module.scss";
 import axios from "axios";
-import { useNavigate } from 'react-router';
-
+import { useNavigate } from "react-router";
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+
+  const skipSignUp = () => {
+    navigate("/login");
+  };
 
   const CreateUser = async (e) => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const RegisterComponent = () => {
     console.log(userInfo);
 
     const ToLogin = () => {
-      navigate('/login?registered=true');
+      navigate("/login?registered=true");
     };
 
     // Check for user in database - backend
@@ -28,15 +31,23 @@ const RegisterComponent = () => {
       .get("http://localhost:5000/api/getUser/" + userInfo.username)
       .then((response) => {
         if (response.data !== null) {
-          alert("Username already exists");
+          document.getElementsByClassName(
+            style.message2
+          )[0].style.display = "flex";
         } else {
           console.log("User does not exist, creating user");
           try {
-            axios.post("http://localhost:5000/api/register", userInfo)
-            .then(() => {
-              document.getElementsByClassName(style.message)[0].style.display = "flex";
-              setTimeout(ToLogin, 1500);
-            })
+            axios
+              .post("http://localhost:5000/api/register", userInfo)
+              .then(() => {
+                document.getElementsByClassName(
+                  style.message2
+                )[0].style.display = "none";
+                document.getElementsByClassName(
+                  style.message
+                )[0].style.display = "flex";
+                setTimeout(ToLogin, 1500);
+              });
           } catch (error) {
             console.error("Register Error: ", error);
             console.log(error);
@@ -46,46 +57,57 @@ const RegisterComponent = () => {
       .catch((error) => {
         console.log(error);
       });
-
   };
 
   return (
     <>
       <div className={style.main}>
-        <form className={style.block} onSubmit={CreateUser}>
-          <h1>Welcome to FireAway!</h1>
-          <h3>Sign up below!</h3>
+        <form className={style.form} onSubmit={CreateUser}>
+          <div className={style.message}>
+            User Successfully Created! Proceeding to Sign in
+          </div>
+          <div className={style.message2}>
+            Username already exists, please try again.
+          </div>
+          <h1>
+            Welcome to <span className={style.text}>FireAway!</span>
+          </h1>
+          <h4>Sign Up:</h4>
+          <label className={style.label}>First Name:</label>
           <input id="name" className={style.input} placeholder="Name"></input>
+          <label className={style.label}>Last Name:</label>
           <input
             id="surname"
             className={style.input}
             placeholder="Surname"
           ></input>
+          <label className={style.label}>E-mail address:</label>
           <input
             id="email"
             className={style.input}
-            placeholder="email"
+            placeholder="Email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           ></input>
+          <label className={style.label}>Username:</label>
           <input
             id="username"
             className={style.input}
-            placeholder="username"
+            placeholder="Username"
           ></input>
+          <label className={style.label}>Password:</label>
           <input
             type="password"
             id="password"
             className={style.input}
-            placeholder="passowrd"
+            placeholder="Password"
           ></input>
           <button className={style.button}>Sign Up!</button>
-          <p className={style.signIn}>
+          <p onClick={skipSignUp} className={style.signIn}>
             Already have an account?
             <span className={style.underline}> Sign In Here!</span>
           </p>
         </form>
-        <div className={style.message}>User Successfully Created! Proceeding to Sign in</div>
       </div>
     </>
   );
