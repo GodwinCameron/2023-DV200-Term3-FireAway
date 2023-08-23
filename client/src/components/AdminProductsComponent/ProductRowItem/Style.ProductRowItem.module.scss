@@ -1,0 +1,48 @@
+@import "../../../styles.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  width: 100%;
+  height: 20px;
+  background-color: rgb(172, 189, 211);
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  .productValue {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-family: monospace;
+  }
+  .price {
+    display: flex;
+    flex: 1.1;
+  }
+  .stock {
+    display: flex;
+    flex: 0.5;
+    justify-content: center;
+  }
+}
+.editing {
+  margin-right: 1vw;
+  display: flex;
+  align-items: center;
+}
+.delete {
+  margin-right: 1vw;
+  display: flex;
+  align-items: center;
+  background-color: rgba(224, 74, 74, 0.952);
+  color: white;
+  cursor: pointer;
+}
+.cancel {
+    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+  }

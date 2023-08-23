@@ -4,7 +4,9 @@ import ProductCardComponent from "../../components/ProductCardComponent/Componen
 import "../../styles.scss"
 import style from "./Style.Pistols-Route.module.scss";
 
-const PistolsRoute = () => {
+const PistolsRoute = (props) => {
+
+    const admin = props.admin;
 
     const [products, setProducts] = React.useState([]);
 
@@ -22,7 +24,7 @@ const PistolsRoute = () => {
 
 
     return(<>
-        <NavBarComponent />
+        <NavBarComponent admin={admin} />
         <p className={style.text}>Our Pistol stock:</p>
         <div className={style.productArea}>
             {products.map((product, index) => {

@@ -15,7 +15,7 @@ const RifleSchema = mongoose.Schema({
     },
     frame: {
         type: String,
-        required: false
+        required: true
     },
     capacity: {
         type: Number,
@@ -31,7 +31,8 @@ const RifleSchema = mongoose.Schema({
     },
     stock: {
         type: Number,
-        required: true
+        required: true,
+        default: 1
     },
 
 })

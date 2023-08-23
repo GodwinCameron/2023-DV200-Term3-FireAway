@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import style from "./Style.AdminAdd.module.scss";
+import style from "./Style.AdminUsers.module.scss";
 import axios from "axios";
-import instance from "../../api";
-// import api from '../../api';
 
-const AdminAdd = () => {
+const AdminUsers = () => {
   const [divStyle, setDivStyle] = useState({});
   const [addProductType, setAddProductType] = useState("none");
 
   const expand = () => {
     const expanded = {
-      height: "60vh",
+      height: "50vh",
     };
     setDivStyle(expanded);
     document.getElementById("add-heading").style.display = "none";
@@ -48,28 +46,14 @@ const AdminAdd = () => {
       alert("Please enter a capacity size.");
       return;
     } else if (addProductType === "Rifle") {
-      instance.post("http://localhost:5000/api/rifle", {
+      axios.post("http://localhost:5000/api/rifle", {
         model: document.getElementById("addName").value,
         make: document.getElementById("addMake").value,
         calibre: document.getElementById("addCalibre").value,
         capacity: document.getElementById("addCapacity").value,
         attachment: document.getElementById("addAttachment").value,
-        price: document.getElementById("price").value,
-        stock: document.getElementById("stock").value,
         frame: document.getElementById("addFrame").value,
       });
-
-      // //JWT Request
-      // api.get('/rifle')
-      //   .then(response => {
-      //     console.log("response worked");
-      //     console.log(response.data);
-      //   })
-      //   .catch(error => {
-      //     console.log("error");
-      //     console.log(error);
-      //   });
-
       console.log("Rifle added!");
     } else if (addProductType === "Pistol") {
       axios.post("http://localhost:5000/api/pistol", {
@@ -78,8 +62,6 @@ const AdminAdd = () => {
         calibre: document.getElementById("addCalibre").value,
         attachment: document.getElementById("addAttachment").value,
         frame: document.getElementById("addFrame").value,
-        price: document.getElementById("price").value,
-        stock: document.getElementById("stock").value,
       });
       console.log("Pistol added!");
     } else {
@@ -94,8 +76,6 @@ const AdminAdd = () => {
             capacity: document.getElementById("addCapacity").value,
             attachment: document.getElementById("addAttachment").value,
             frame: document.getElementById("addFrame").value,
-            price: document.getElementById("price").value,
-            stock: document.getElementById("stock").value,
           }
       );
       alert("Something went wrong, please try again.");
@@ -108,11 +88,6 @@ const AdminAdd = () => {
     document.getElementById("addName").value = "";
     document.getElementById("addMake").value = "";
     document.getElementById("addCalibre").value = "none";
-    document.getElementById("addCapacity").value = "";
-    document.getElementById("addAttachment").value = "";
-    document.getElementById("addFrame").value = "none";
-    document.getElementById("price").value = "";
-    document.getElementById("stock").value = 1;
   };
 
   return (
@@ -180,18 +155,6 @@ const AdminAdd = () => {
             />
           </>
         ) : null}
-        <p>Amount:</p>
-        <input id="stock" placeholder="Stock - Defaulted to 1 item" className={style.input} />
-        <p>Price:</p>
-        <div className={style.priceBlock}>
-          R
-          <input
-            type="number"
-            id="price"
-            placeholder="0.00"
-            className={[style.input, style.priceAmount].join(" ")}
-          />
-        </div>
         <button id="added-button" className={style.button}>
           Add Product
         </button>
@@ -199,10 +162,10 @@ const AdminAdd = () => {
           Product Added!
         </span>
         <br />
-        <h3 className={style.done} onClick={collapse}>Done -</h3>
+        <h3 onClick={collapse}>Done -</h3>
       </form>
     </>
   );
 };
 
-export default AdminAdd;
+export default AdminUsers;

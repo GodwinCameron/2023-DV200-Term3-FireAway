@@ -6,9 +6,9 @@ import listIcon from "../../assets/icons/list.svg";
 import { Link } from "react-router-dom";
 
 const ProductCardComponent = (props) => {
-  // console.log(props.product);
+  const product = props.productData;
 
-  var formattedPrice = parseInt(36000).toLocaleString();
+  var formattedPrice = parseInt(product.price).toLocaleString();
 
   return (
     <Link className={style.noTextDec} to="/product">
@@ -17,7 +17,7 @@ const ProductCardComponent = (props) => {
         <div className={style.productTitle}>
           {props.productData.make} {props.productData.model}{" "}
           {props.productData.frame !== " "
-            ? " - " + props.productData.frame
+            ? " - " + product.frame
             : ""}
         </div>
         <div className={style.productPrice}>

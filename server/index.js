@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const pistolRoute = require('./routes/pistols')
 const userRoute = require('./routes/users')
@@ -33,3 +34,4 @@ mongoose.connect(process.env.DB_CONNECTION, {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => { console.log(`Server Started on port:${PORT}`)});
+

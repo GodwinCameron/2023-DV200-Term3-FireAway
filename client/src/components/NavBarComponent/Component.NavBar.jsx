@@ -9,7 +9,10 @@ import downIcon from "../../assets/icons/down-chevron.svg";
 import FAlogo from "../../assets/fireaway-logo.svg";
 import { Link } from "react-router-dom";
 
-const NavBarComponent = () => {
+const NavBarComponent = (props) => {
+
+  const admin = props.admin;
+
   return (
     <>
       <div className={style.main}>
@@ -25,20 +28,21 @@ const NavBarComponent = () => {
             <img alt="" src={searchIcon} className={style.searchIcon} />
           </div>
           <div className={style.searchBarWidgets}>
-            <Link to="/admin">
+            { admin && <Link to="/admin">
               <div className={style.navAdminIcon}>
                 <img alt="" src={adminIcon} />
               </div>
-            </Link>
+            </Link>}
             <div className={style.navCartIcon}>
               <img alt="" src={cartIcon} />
             </div>
             <div id="nav_cart_items" className={style.cartItems}>
               23
             </div>
-            <div className={style.navProfileIcon}>
+            <Link to="/login"><div className={style.navProfileIcon}>
               <img alt="" src={profileIcon} />
             </div>
+            </Link>
           </div>
         </div>
         <div className={style.bottomSection}>

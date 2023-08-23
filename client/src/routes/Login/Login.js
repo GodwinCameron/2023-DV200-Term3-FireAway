@@ -23,7 +23,8 @@ const LoginRoute = () => {
   const navigate = useNavigate();
 
   const ToHome = () => {
-    navigate("/");
+    // navigate("/");
+    window.location.href = "/";
   };
   const ToRegister = () => {
     navigate("/register");
@@ -52,7 +53,7 @@ const LoginRoute = () => {
         .post("http://localhost:5000/api/login", userInfo)
         .then((res) => {
           console.log(res);
-          localStorage.setItem("JWT", res.data.token);
+          sessionStorage.setItem("JWT", res.data.token);
           ToHome();
         })
         .catch((err) => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./Style.Register.module.scss";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import logo from "../../assets/fireaway-logo.svg";
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const RegisterComponent = () => {
     <>
       <div className={style.main}>
         <form className={style.form} onSubmit={CreateUser}>
+          <div className={style.logo}><img src={logo} alt="logo"></img></div>
           <div className={style.message}>
             User Successfully Created! Proceeding to Sign in
           </div>
