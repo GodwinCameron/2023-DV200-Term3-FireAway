@@ -3,6 +3,7 @@ import style from "./Style.Product-Route.module.scss";
 import NavBarComponent from "../../components/NavBarComponent/Component.NavBar";
 import Product from "../../components/ProductComponent/Component.Product";
 import axios from "axios";
+import FooterComponent from "../../components/FooterComponent/Component.Footer";
 
 const IndividualProduct = () => {
 
@@ -30,12 +31,7 @@ const IndividualProduct = () => {
         <div className={style.content}>
             <Product />
         </div>
-        <form onSubmit={testPost}>
-            <div className={style.form}>
-                <input type="text" placeholder="Name" className={style.input}/>
-                <button>hi there</button>
-            </div>
-        </form>
+        <FooterComponent />
     </>)
 }
 
