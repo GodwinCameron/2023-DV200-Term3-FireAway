@@ -23,7 +23,7 @@ const AdminProducts = () => {
     document.getElementById("products-heading").style.display = "flex";
   };
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch("http://localhost:5000/api/rifles")
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +41,16 @@ const AdminProducts = () => {
       .catch((err) => {
         console.log("pistol error:", err);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const handleRefreshData = (childId) => {
+    // Delete the child logic, then:
+    fetchData(); // Reload the data
+  };
 
   return (
     <>
@@ -58,17 +67,19 @@ const AdminProducts = () => {
             // You can safely use the `index` variable here
             return (
               <ProductRowItem
+                refresh={handleRefreshData}
                 key={index}
                 productData={rifle}
                 alternateProp={index % 2 === 0 ? 1 : 2}
               />
             );
           })}
-          <br/>
+          <br />
           <p>Pistols:</p>
           {pistols.map((pistols, index) => {
             return (
               <ProductRowItem
+                refresh={handleRefreshData}
                 key={index}
                 productData={pistols}
                 alternateProp={index % 2 === 0 ? 1 : 2}

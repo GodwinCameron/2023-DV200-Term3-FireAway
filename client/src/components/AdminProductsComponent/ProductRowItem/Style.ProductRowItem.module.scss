@@ -18,6 +18,11 @@
     align-items: center;
     font-family: monospace;
   }
+  .adminData {
+    display: flex;
+    align-items: center;
+    min-width: 6vw;
+  }
   .price {
     display: flex;
     flex: 1.1;
@@ -35,6 +40,7 @@
 }
 .delete {
   margin-right: 1vw;
+  margin-left: 2vw;
   display: flex;
   align-items: center;
   background-color: rgba(224, 74, 74, 0.952);
@@ -42,7 +48,14 @@
   cursor: pointer;
 }
 .cancel {
-    margin-right: 1vw;
-    display: flex;
-    align-items: center;
-  }
+  margin-right: 1vw;
+  display: flex;
+  align-items: center;
+}
+.ppHere {
+  margin-right: 1vw;
+  display: flex;
+  align-items: center;
+  background-color: rgb(90, 90, 239);
+  color: white;
+}

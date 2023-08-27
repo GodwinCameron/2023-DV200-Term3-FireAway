@@ -1,24 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Style.Product.module.scss";
 import productImage from "../../assets/images/ar.png";
+import { useLocation } from "react-router-dom";
+import adminEdit from "../../assets/icons/edit.svg";
+import adminDelete from "../../assets/icons/delete.svg";
+import adminUpdate from "../../assets/icons/tick.svg";
+import axios from "axios";
 
-const Product = () => {
-  const stock = 1;
+const Product = (props) => {
+  const admin = props.admin;
+  const user = props.user;
 
-  //   const stockColor = () => {
-  //     if (stock > 0) {
-  //       document.getElementById("stock").style.color = "rgb(151, 226, 39)";
-  //     } else {
-  //       document.getElementById("stock").style.color = "rgb(226, 39, 39)";
-  //     }
-  //   };
+  const [productData, setProductData] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedPrice, setUpdatedPrice] = useState(0);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const productId = queryParams.get("id");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/rifle/" + productId)
+      .then((response) => response.json())
+      .then((data) => {
+        setProductData(data);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const editing = () => {
+    setIsEditing(!isEditing);
+  };
+
+  var formattedPrice = parseInt(productData.price).toLocaleString();
+
+  const updatePrice = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:5000/api/rifle/" + productId, {
+        price: updatedPrice,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setIsEditing(!isEditing);
+    window.location.reload();
+  };
 
   return (
     <>
       <div className={style.main}>
         <div className={style.leftCol}>
           <div className={style.productImage}>
-            <img alt="none" src={productImage} />
+            <img className={style.fitImg} alt="none" src={productImage} />
           </div>
           <div className={style.smallText}>
             <p>
@@ -44,36 +83,99 @@ const Product = () => {
         <div className={style.rightCol}>
           {/* product in stock */}
           <div id="stock" className={style.productInStock}>
-            {stock > 0 ? <p>In Stock</p> : <p>Out of Stock</p>}
+          {admin && 
+              <div onClick={editing} className={style.adminButton}>
+                <img src={adminEdit} />
+              </div>
+            }
+            {productData.stock > 0 ? (
+              <p className={style.inStock}>In Stock</p>
+            ) : (
+              <p>Out of Stock</p>
+            )}
           </div>
           <div className={style.productFrame}>
-            <p className={style.bold}>
-              Availible in: <span className={style.text}> Black</span>
-            </p>
+            {productData.stock >= 1 && (
+              <p className={style.bold}>
+                Available in:{" "}
+                <span className={style.text}>{productData.frame}</span>
+              </p>
+            )}
           </div>
           <div className={style.productTitle}>
-            <h1>AR 15 - 5.56 NATO - 16" Barrel - 30 Round Capacity</h1>
+            {admin && (
+              <div className={style.adminButton}>
+                <img src={adminEdit} />
+              </div>
+            )}
+            <h1>
+              {productData.make} {productData.model} {productData.calibre}{" "}
+              {productData.capacity !== undefined
+                ? " - " + productData.capacity + " Round Capacity"
+                : null}
+            </h1>
           </div>
           <div className={style.productDescription}>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quibusdam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.
-              Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.
-              Quisquam, voluptatum. Quisquam,
+            {admin && (
+              <div className={style.adminButton}>
+                <img src={adminEdit} />
+              </div>
+            )}
+            <p className={style.widthFit}>
+              Non deleniti iste quo deserunt consequatur 33 tempora rerum sed
+              quia tenetur. 33 fugiat dolorem aut nesciunt quae sed
+              reprehenderit ullam non earum voluptatibus qui laudantium
+              molestiae est delectus officiis est minus doloremque
             </p>
           </div>
           <div className={style.productPrice}>
-            <h1>R 12,000.00</h1>
+            {admin && 
+              <div onClick={editing} className={style.adminButton}>
+                <img src={adminEdit} />
+              </div>
+            }
+            {isEditing === true ? (
+              <form className={style.update} onSubmit={updatePrice}>
+                R
+                <input
+                  onChange={(e) => setUpdatedPrice(e.target.value)}
+                  placeholder={productData.price}
+                  className={style.input}
+                  type="number"
+                ></input>
+                <div className={style.spacer} />
+                <button className={style.adminUpdate}>
+                  <img src={adminUpdate} />
+                </button>
+              </form>
+            ) : (
+              <h1>R {formattedPrice}.00</h1>
+            )}
           </div>
-          <div className={style.productButtons}>
-            <div className={style.productQuantity}>
-              <p className={style.bold}>Quantity:</p>
-              <input className={style.input} type="number" placeholder="1" />
+
+          {productData.stock >= 1 ? (
+            <div className={style.productButtons}>
+              <div className={style.productQuantity}>
+                <p className={style.bold}>Quantity:</p>
+                <input className={style.input} type="number" placeholder="1" />
+              </div>
+              <div className={style.productAddToCart}>
+                <button className={style.button}>Add to Cart</button>
+              </div>
             </div>
-            <div className={style.productAddToCart}>
-              <button className={style.button}>Add to Cart</button>
+          ) : (
+            <div className={style.notifyMne}>Notify me when stock arrives</div>
+          )}
+          {admin && (
+            <div className={style.adminDelete}>
+              <img src={adminDelete} />
             </div>
-          </div>
+          )}
+          {admin && (
+            <div className={style.adminUpdate}>
+              <img src={adminUpdate} />
+            </div>
+          )}
         </div>
         {/* create new button */}
       </div>

@@ -23,8 +23,11 @@
       height: 80%;
       //   background-color: greenyellow;
       display: flex;
-      img {
-        scale: 0.8;
+      justify-content: center;
+      align-items: center;
+      .fitImg {
+        max-width: 100%;
+        max-height: 100%;
       }
     }
     .smallText {
@@ -63,10 +66,14 @@
     flex-direction: column;
     gap: 1vh;
     .productInStock {
+      display: flex;
       text-transform: uppercase;
-      color: rgb(151, 226, 39);
+      color: red;
       font-size: 18px;
       font-family: "Antonio";
+      .inStock {
+        color: rgb(151, 226, 39);
+      }
     }
     .productFrame {
       font-size: 14px;
@@ -74,16 +81,22 @@
     .productTitle {
       font-family: "Antonio";
       font-size: 18px;
+      display: flex;
+      align-items: center;
     }
     .productDescription {
       font-size: 14px;
       color: gray;
+      display: flex;
+      align-items: center;
     }
     .productPrice {
       font-family: "Inconsolata";
       font-size: 22px;
       letter-spacing: 2px;
       margin-bottom: 2vh;
+      display: flex;
+      align-items: center;
     }
     .productButtons {
       height: 7vh;
@@ -116,10 +129,10 @@
           border: 0;
           width: 100%;
           cursor: pointer;
-          &:hover{
+          &:hover {
             background-color: $palette-2;
           }
-          &:active{
+          &:active {
             background-color: $palette-5;
           }
         }
@@ -132,4 +145,147 @@
 }
 .text {
   font-weight: lighter;
+}
+
+.adminButton {
+  background-color: #48dbfb90;
+  border: 1px solid #48dbfb;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5vw;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-family: "DM Sans";
+  flex-direction: column;
+  cursor: pointer;
+  img {
+    scale: 120%;
+  }
+  &:hover {
+    background-color: #48dbfb;
+    img {
+      filter: invert(100%);
+    }
+    box-shadow: 1px 2px 9px 0px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    background-color: #a4a4a4;
+    border: 1px solid #a4a4a4;
+    img {
+      filter: invert(50%);
+    }
+    box-shadow: 1px 2px 12px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.widthFit {
+  max-width: 80%;
+}
+
+.adminDelete {
+  background-color: #ee525390;
+  border: 1px solid #ee5253;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5vw;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-family: "DM Sans";
+  flex-direction: column;
+  cursor: pointer;
+  img {
+    scale: 120%;
+  }
+  &:hover {
+    background-color: #ee5253;
+    img {
+      filter: invert(100%);
+    }
+    box-shadow: 1px 2px 9px 0px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    background-color: #a4a4a4;
+    border: 1px solid #a4a4a4;
+    img {
+      filter: invert(50%);
+    }
+    box-shadow: 1px 2px 12px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+.adminUpdate {
+  background-color: #32ff7e90;
+  border: 1px solid #32ff7e;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5vw;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-family: "DM Sans";
+  flex-direction: column;
+  cursor: pointer;
+  img {
+    scale: 120%;
+  }
+  &:hover {
+    background-color: #32ff7e;
+    img {
+      filter: invert(100%);
+    }
+    box-shadow: 1px 2px 9px 0px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    background-color: #a4a4a4;
+    border: 1px solid #a4a4a4;
+    img {
+      filter: invert(50%);
+    }
+    box-shadow: 1px 2px 12px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.notifyMne {
+  display: flex;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  user-select: none;
+  width: 12vw;
+  background-color: $palette-1;
+  cursor: pointer;
+  &:hover {
+    background-color: $palette-2;
+  }
+}
+
+.spacer {
+  width: 2vw;
+  height: 1px;
+}
+.update {
+  display: flex;
+  flex-direction: row;
+  height: 3vh;
+  width: 100%;
+  align-items: center;
+  .input {
+    outline: 0;
+    border: 0;
+    background-color: rgb(248, 248, 248);
+    height: 100%;
+    border-radius: 6px;
+    color: black;
+    &:focus {
+      box-shadow: inset 1px 1px 15px -10px rgba(0, 0, 0, 0.5);
+    }
+  }
 }

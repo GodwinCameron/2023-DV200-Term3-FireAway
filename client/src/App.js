@@ -9,6 +9,7 @@ import PistolsRoute from './routes/Pistols/Pistols';
 import LoginRoute from './routes/Login/Login';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ShotgunsRoute from './routes/Shotguns/Shotguns';
 
 function App() {
  const [admin, setAdmin] = useState(false);
@@ -46,6 +47,7 @@ console.log("Data from App.js:", "Admin - ",admin , "User data - ", user);
         <Route path="/" element={<HomeRoute admin={admin} user={user}/>}/>
         <Route path="/rifles" element={<RiflesRoute admin={admin} user={user}/>}/>
         <Route path="/pistols" element={<PistolsRoute admin={admin} user={user}/>}/>
+        <Route path="/shotguns" element={<ShotgunsRoute admin={admin} user={user}/>}/>
         <Route path="/register" element={<RegisterRoute admin={admin} user={user}/>}/>
         <Route path="/login" element={<LoginRoute admin={admin} user={user}/>}/>
         { admin &&  <Route if  path="/admin" element={<Admin />}/> }

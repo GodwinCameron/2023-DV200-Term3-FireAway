@@ -35,7 +35,7 @@ router.put('/api/pistol/:id', async (req, res) =>{
 
 //Delete
 router.delete('/api/pistol/:id', async (req, res) =>{
-    await PistolSchemaSchema.findByIdAndDelete(req.params.id)
+    await PistolSchema.findByIdAndDelete(req.params.id)
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })

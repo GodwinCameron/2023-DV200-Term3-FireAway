@@ -10,7 +10,6 @@ import FAlogo from "../../assets/fireaway-logo.svg";
 import { Link } from "react-router-dom";
 
 const NavBarComponent = (props) => {
-
   const admin = props.admin;
 
   return (
@@ -28,20 +27,23 @@ const NavBarComponent = (props) => {
             <img alt="" src={searchIcon} className={style.searchIcon} />
           </div>
           <div className={style.searchBarWidgets}>
-            { admin && <Link to="/admin">
-              <div className={style.navAdminIcon}>
-                <img alt="" src={adminIcon} />
-              </div>
-            </Link>}
+            {admin && (
+              <Link to="/admin">
+                <div className={style.navAdminIcon}>
+                  <img alt="" src={adminIcon} />
+                </div>
+              </Link>
+            )}
             <div className={style.navCartIcon}>
               <img alt="" src={cartIcon} />
             </div>
             <div id="nav_cart_items" className={style.cartItems}>
               23
             </div>
-            <Link to="/login"><div className={style.navProfileIcon}>
-              <img alt="" src={profileIcon} />
-            </div>
+            <Link to="/login">
+              <div className={style.navProfileIcon}>
+                <img alt="" src={profileIcon} />
+              </div>
             </Link>
           </div>
         </div>
@@ -63,10 +65,12 @@ const NavBarComponent = (props) => {
               <img alt="" src={downIcon} />
             </div>
           </Link>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Shotguns
-            <img alt="" src={downIcon} />
-          </div>
+          <Link to="/shotguns">
+            <div className={[style.navTab, style.catagory].join(" ")}>
+              Shotguns
+              <img alt="" src={downIcon} />
+            </div>
+          </Link>
           <div className={[style.navTab, style.catagory].join(" ")}>
             Revolvers
             <img alt="" src={downIcon} />

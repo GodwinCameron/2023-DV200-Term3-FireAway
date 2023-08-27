@@ -11,7 +11,7 @@ const ProductCardComponent = (props) => {
   var formattedPrice = parseInt(product.price).toLocaleString();
 
   return (
-    <Link className={style.noTextDec} to="/product">
+    <Link className={style.noTextDec} to={"/product?id="+product._id}>
       <div className={style.main}>
         <div className={style.image}></div>
         <div className={style.productTitle}>
