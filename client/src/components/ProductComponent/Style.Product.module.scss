@@ -277,6 +277,8 @@
   height: 3vh;
   width: 100%;
   align-items: center;
+  gap: 0.2vw;
+  flex-wrap: wrap;
   .input {
     outline: 0;
     border: 0;
@@ -288,4 +290,11 @@
       box-shadow: inset 1px 1px 15px -10px rgba(0, 0, 0, 0.5);
     }
   }
+}
+.deteleProduct{
+    display: flex;
+    align-items: center;
+}
+.tall{
+    margin-bottom: 5vh;
 }

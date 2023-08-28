@@ -27,8 +27,7 @@ router.post('/api/rifle', async (req,res) => {
 
 //Update
 router.put('/api/rifle/:id', async (req, res) =>{
-    const {id} = req.params.id;
-    await RifleSchema.updateOne({ id }, req.body)
+    await RifleSchema.updateOne({_id: req.params.id}, req.body)
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })
