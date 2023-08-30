@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import style from "./Style.Product.module.scss";
-import productImage from "../../assets/images/ar.png";
+import loadingGif from "../../assets/images/load.gif";
+import rifle from "../../assets/icons/rifle.png";
+import pistol from "../../assets/icons/pistol.png";
+import shotgun from "../../assets/icons/shotgun.png";
 import { useLocation } from "react-router-dom";
 import adminEdit from "../../assets/icons/edit.svg";
 import adminDelete from "../../assets/icons/delete.svg";
@@ -12,11 +15,13 @@ const Product = (props) => {
   const user = props.user;
 
   const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState(1);
   const [isEditingPrice, setIsEditingPrice] = useState(false);
   const [isEditingStock, setIsEditingStock] = useState(false);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingDescription, setIsEditingDescription] = useState(false);
+  const [isEditingImage, setIsEditingImage] = useState(false);
   const [updatedPrice, setUpdatedPrice] = useState(productData.price);
   const [updatedStock, setUpdatedStock] = useState(productData.stock);
   const [updatedTitle, setUpdatedTitle] = useState({
@@ -26,22 +31,36 @@ const Product = (props) => {
     capacity: productData.capacity,
     frame: productData.frame,
   });
+  const [updatedImage, setUpdatedImage] = useState(productData.image);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const productId = queryParams.get("id");
+  const productType = queryParams.get("type");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/rifle/" + productId)
+    fetch("http://localhost:5000/api/" + productType + "/" + productId)
       .then((response) => response.json())
       .then((data) => {
         setProductData(data);
-        console.log(data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   }, []);
+
+let productImage;
+
+if (loading) {
+  productImage = loadingGif;
+} else if (!productData.image) {
+  productImage =
+    productType === "rifle" ? rifle : productType === "pistol" ? pistol : shotgun;
+} else {
+  productImage = productData.image;
+}
 
   const editingPrice = () => {
     setIsEditingPrice(!isEditingPrice);
@@ -55,37 +74,40 @@ const Product = (props) => {
   const editingDescription = () => {
     setIsEditingDescription(!isEditingDescription);
   };
+  const editingImage = () => {
+    setIsEditingImage(!isEditingImage);
+  };
 
   var formattedPrice = parseInt(productData.price).toLocaleString();
 
   const handleAddCartAmount = (e) => {
     const newValue = parseInt(e.target.value, 10);
-    if (
-      !isNaN(newValue) &&
-      newValue >= 1 &&
-      newValue <= productData.stock
-    ) {
+    if (!isNaN(newValue) && newValue >= 1 && newValue <= productData.stock) {
       setCurrentValue(newValue);
     }
   };
 
   const handleDelete = () => {
+    const confirmed = window.confirm("Are you sure you want to delete this product?");
+    if (confirmed) {
     axios
-        .delete("http://localhost:5000/api/rifle/" + productId)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+      .delete("http://localhost:5000/api/" + productType + "/" + productId)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // window.location.href = "/rifles";
-    window.location.reload();
-    };
+    window.location.reload();} else {
+        return;
+        }
+  };
 
   const updatePrice = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5000/api/rifle/" + productId, {
+      .put("http://localhost:5000/api/" + productType + "/" + productId, {
         price: updatedPrice,
       })
       .then((response) => {
@@ -100,7 +122,7 @@ const Product = (props) => {
   const updateStock = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5000/api/rifle/" + productId, {
+      .put("http://localhost:5000/api/" + productType + "/" + productId, {
         stock: updatedStock,
       })
       .then((response) => {
@@ -115,7 +137,7 @@ const Product = (props) => {
   const updateTitle = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5000/api/rifle/" + productId, {
+      .put("http://localhost:5000/api/" + productType + "/" + productId, {
         make: updatedTitle.make,
         model: updatedTitle.model,
         calibre: updatedTitle.calibre,
@@ -129,6 +151,21 @@ const Product = (props) => {
         console.log(error);
       });
     setIsEditingPrice(!isEditingPrice);
+    window.location.reload();
+  };
+  const updateImage = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:5000/api/" + productType + "/" + productId, {
+        image: updatedImage,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setIsEditingImage(!isEditingImage);
     window.location.reload();
   };
   //   const updatePrice = (e) => {
@@ -151,8 +188,28 @@ const Product = (props) => {
     <>
       <div className={style.main}>
         <div className={style.leftCol}>
+          {isEditingImage && (
+            <form onSubmit={updateImage}>
+              <input
+                placeholder="Paste Image Link Here"
+                className={style.imgLink}
+                onChange={(e) => setUpdatedImage(e.target.value)}
+              />
+              <button className={[style.adminUpdate, style.imgTick].join(" ")}>
+                <img src={adminUpdate} />
+              </button>
+            </form>
+          )}
           <div className={style.productImage}>
             <img className={style.fitImg} alt="none" src={productImage} />
+            {admin && (
+              <div
+                className={[style.adminButton, style.imageChange].join(" ")}
+                onClick={editingImage}
+              >
+                <img src={adminEdit} />
+              </div>
+            )}
           </div>
           <div className={style.smallText}>
             <p>
@@ -184,7 +241,7 @@ const Product = (props) => {
               </div>
             )}
             {productData.stock > 0 ? (
-              <p className={style.inStock}>In Stock</p>
+              <p className={style.inStock}>{productData.stock}{" "}In Stock</p>
             ) : (
               <p>Out of Stock</p>
             )}
@@ -311,10 +368,7 @@ const Product = (props) => {
               </div>
             )}
             <p className={style.widthFit}>
-              Non deleniti iste quo deserunt consequatur 33 tempora rerum sed
-              quia tenetur. 33 fugiat dolorem aut nesciunt quae sed
-              reprehenderit ullam non earum voluptatibus qui laudantium
-              molestiae est delectus officiis est minus doloremque
+              {productData.description}
             </p>
           </div>
           <div className={style.productPrice}>

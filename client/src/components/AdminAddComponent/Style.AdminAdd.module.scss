@@ -26,6 +26,10 @@
     margin-top: auto;
     margin-left: auto;
 }
+.tubeMagRadio{
+   display: flex;
+   gap: 0.5vw;
+}
 
   h3 {
     &:hover {
@@ -93,4 +97,7 @@
 .test {
   background-color: magenta;
   font-family: "Courier New", Courier, monospace;
+}
+.spacer{
+    margin-left: 3vw;
 }

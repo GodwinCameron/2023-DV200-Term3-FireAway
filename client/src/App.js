@@ -10,6 +10,7 @@ import LoginRoute from './routes/Login/Login';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ShotgunsRoute from './routes/Shotguns/Shotguns';
+import Wildcard from './routes/Wildcard/Wildcard';
 
 function App() {
  const [admin, setAdmin] = useState(false);
@@ -50,8 +51,9 @@ console.log("Data from App.js:", "Admin - ",admin , "User data - ", user);
         <Route path="/shotguns" element={<ShotgunsRoute admin={admin} user={user}/>}/>
         <Route path="/register" element={<RegisterRoute admin={admin} user={user}/>}/>
         <Route path="/login" element={<LoginRoute admin={admin} user={user}/>}/>
-        { admin &&  <Route if  path="/admin" element={<Admin />}/> }
+        { admin &&  <Route path="/admin" element={<Admin />}/> }
         <Route path="/product" element={<IndividualProduct admin={admin} user={user} />}/>
+        <Route path="*" element={<Wildcard admin={admin} user={user}/>}/>
       </Routes>
     </BrowserRouter>);
 }

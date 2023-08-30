@@ -12,7 +12,7 @@ router.get('/api/pistols', async(req, res) =>{
 
 //Read one
 router.get('/api/pistol/:id', async (req, res) => {
-    const findPistol = await PistolSchemaSchema.findById(req.params.id)
+    const findPistol = await PistolSchema.findById(req.params.id)
     res.json(findPistol)
 })
 
@@ -28,7 +28,7 @@ router.post('/api/pistol', async (req,res) => {
 //Update
 router.put('/api/pistol/:id', async (req, res) =>{
     const {id} = req.params.id;
-    await PistolSchemaSchema.updateOne({ id }, req.body)
+    await PistolSchema.updateOne({_id: req.params.id}, req.body)
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })

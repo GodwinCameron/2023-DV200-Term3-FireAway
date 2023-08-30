@@ -10,7 +10,7 @@ const AdminAdd = () => {
 
   const expand = () => {
     const expanded = {
-      height: "60vh",
+      height: "70vh",
     };
     setDivStyle(expanded);
     document.getElementById("add-heading").style.display = "none";
@@ -47,32 +47,13 @@ const AdminAdd = () => {
     ) {
       alert("Please enter a capacity size.");
       return;
-    } else if (addProductType === "Rifle") {
-      instance.post("http://localhost:5000/api/rifle", {
-        model: document.getElementById("addName").value,
-        make: document.getElementById("addMake").value,
-        calibre: document.getElementById("addCalibre").value,
-        capacity: document.getElementById("addCapacity").value,
-        attachment: document.getElementById("addAttachment").value,
-        price: document.getElementById("price").value,
-        stock: document.getElementById("stock").value,
-        frame: document.getElementById("addFrame").value,
-      });
-
-      // //JWT Request
-      // api.get('/rifle')
-      //   .then(response => {
-      //     console.log("response worked");
-      //     console.log(response.data);
-      //   })
-      //   .catch(error => {
-      //     console.log("error");
-      //     console.log(error);
-      //   });
-
-      console.log("Rifle added!");
-    } else if (addProductType === "Pistol") {
-      axios.post("http://localhost:5000/api/pistol", {
+    } else if (
+      addProductType === "Rifle" ||
+      addProductType === "Pistol" ||
+      addProductType === "Shotgun"
+    ) {
+      const lowerCaseProductType = addProductType.toLowerCase();
+      instance.post(`http://localhost:5000/api/${lowerCaseProductType}`, {
         model: document.getElementById("addName").value,
         make: document.getElementById("addMake").value,
         calibre: document.getElementById("addCalibre").value,
@@ -80,8 +61,14 @@ const AdminAdd = () => {
         frame: document.getElementById("addFrame").value,
         price: document.getElementById("price").value,
         stock: document.getElementById("stock").value,
+        image: document.getElementById("image").value,
+        thumbnail: document.getElementById("thumbnail").value,
+        ...(addProductType === "Rifle"
+          ? { capacity: document.getElementById("addCapacity").value }
+          : {}),
+        ...(addProductType === "Shotgun" ? { tubemag: true } : {}),
       });
-      console.log("Pistol added!");
+      console.log(`${addProductType} added!`);
     } else {
       console.log(addProductType);
       console.log(
@@ -96,6 +83,8 @@ const AdminAdd = () => {
             frame: document.getElementById("addFrame").value,
             price: document.getElementById("price").value,
             stock: document.getElementById("stock").value,
+            image: document.getElementById("image").value,
+            thumbnail: document.getElementById("thumbnail").value,
           }
       );
       alert("Something went wrong, please try again.");
@@ -108,7 +97,6 @@ const AdminAdd = () => {
     document.getElementById("addName").value = "";
     document.getElementById("addMake").value = "";
     document.getElementById("addCalibre").value = "none";
-    document.getElementById("addCapacity").value = "";
     document.getElementById("addAttachment").value = "";
     document.getElementById("addFrame").value = "none";
     document.getElementById("price").value = "";
@@ -133,6 +121,7 @@ const AdminAdd = () => {
           </option>
           <option value="Rifle">Rifle</option>
           <option value="Pistol">Pistol</option>
+          <option value="Shotgun">Shotgun</option>
         </select>
         <p>Model:</p>
         <input id="addName" placeholder="Model Name" className={style.input} />
@@ -148,6 +137,10 @@ const AdminAdd = () => {
             <span>Select Calibre Size</span>
           </option>
           <option value=".22">.22 (5.6mm)</option>
+          <option value="5.56 NATO">.223 (5.56 NATO)</option>
+          <option value="7.62x39">.305 (7.62x39mm - AK)</option>
+          <option value="7.62x54">.308 (7.62x54mm)</option>
+          <option value=".308">.308 (winchester)</option>
           <option value=".357">.357 - .380 (9mm)</option>
           <option value=".400">.400 - .425 (10mm)</option>
           <option value=".45">.45 (11.5mm)</option>
@@ -180,8 +173,46 @@ const AdminAdd = () => {
             />
           </>
         ) : null}
+        {addProductType === "Shotgun" ? (
+          <>
+            <p>Tubemag:</p>
+            <div className={style.tubeMagRadio}>
+              <label className={style.spacer} htmlFor="addTubemagYes">
+                Yes
+              </label>
+              <input
+                type="radio"
+                id="addTubemagYes"
+                name="addTubemag"
+                value={true}
+              />
+
+              <label className={style.spacer} htmlFor="addTubemagNo">
+                No
+              </label>
+              <input
+                type="radio"
+                id="addTubemagNo"
+                name="addTubemag"
+                value={false}
+              />
+            </div>
+          </>
+        ) : null}
         <p>Amount:</p>
-        <input id="stock" placeholder="Stock - Defaulted to 1 item" className={style.input} />
+        <input
+          id="stock"
+          placeholder="Stock - Defaulted to 1 item"
+          className={style.input}
+        />
+        <p>Image:</p>
+        <input id="image" placeholder="Image Link" className={style.input} />
+        <p>Thumbnail Image:</p>
+        <input
+          id="thumbnail"
+          placeholder="Image Link"
+          className={style.input}
+        />
         <p>Price:</p>
         <div className={style.priceBlock}>
           R
@@ -199,7 +230,9 @@ const AdminAdd = () => {
           Product Added!
         </span>
         <br />
-        <h3 className={style.done} onClick={collapse}>Done -</h3>
+        <h3 className={style.done} onClick={collapse}>
+          Done -
+        </h3>
       </form>
     </>
   );

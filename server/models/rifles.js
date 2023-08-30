@@ -34,6 +34,20 @@ const RifleSchema = mongoose.Schema({
         required: true,
         default: 1
     },
+    image: {
+        type: String,
+        required: false
+    },
+    thumbnail: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false,
+        default:
+          "Bringing you one of FireAway's finest! We assure high quality and durability for each and every one of our products, making this firearm a must have for any gun enthusiast, emplored by the best of the best!",
+      },
 
 })
 
