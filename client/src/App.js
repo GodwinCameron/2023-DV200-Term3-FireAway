@@ -11,10 +11,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ShotgunsRoute from './routes/Shotguns/Shotguns';
 import Wildcard from './routes/Wildcard/Wildcard';
+import Cart from './routes/Cart/Cart';
 
 function App() {
  const [admin, setAdmin] = useState(false);
- const [user, setUser] = useState();
+ const [user, setUser] = useState(false);
 
   useEffect(()=>{
     
@@ -27,7 +28,6 @@ function App() {
         if(res.data.verified === false){
           sessionStorage.clear();
         } else if (res.data.user.superuser === true) {
-          console.log("admin");
           setUser(res.data.user);
           setAdmin(true);
         } else {
@@ -36,11 +36,6 @@ function App() {
       })
     }
   }, []);
-
-  // 
-// path="/*" 
-
-console.log("Data from App.js:", "Admin - ",admin , "User data - ", user);
 
   return (
     <BrowserRouter>
@@ -53,6 +48,7 @@ console.log("Data from App.js:", "Admin - ",admin , "User data - ", user);
         <Route path="/login" element={<LoginRoute admin={admin} user={user}/>}/>
         { admin &&  <Route path="/admin" element={<Admin />}/> }
         <Route path="/product" element={<IndividualProduct admin={admin} user={user} />}/>
+        <Route path="/cart" element={<Cart admin={admin} user={user}/>}/>
         <Route path="*" element={<Wildcard admin={admin} user={user}/>}/>
       </Routes>
     </BrowserRouter>);

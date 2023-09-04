@@ -11,13 +11,12 @@ const HomeRoute = (props) => {
 
     const admin = props.admin;
     const user = props.user;
-    const testData = props;
-    console.log(testData);
+
 
 
     return(<>
     {admin && <AdminHeader user={user} />}
-        <NavBarComponent admin={admin} />
+        <NavBarComponent admin={admin} user={user} />
         <ImageSlider />
         <SecondaryNav />
         <ImageMenu />

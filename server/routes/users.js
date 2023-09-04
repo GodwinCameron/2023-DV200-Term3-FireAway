@@ -70,6 +70,7 @@ router.get("/api/getUser/:username", async (req, res) => {
   res.json(findUser);
 });
 
+// verify token
 router.post("/api/verifytoken", async (req, res) => {
   const token = req.body.token;
   console.log(token);

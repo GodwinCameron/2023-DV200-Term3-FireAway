@@ -99,6 +99,7 @@ const AdminAdd = () => {
     document.getElementById("addCalibre").value = "none";
     document.getElementById("addAttachment").value = "";
     document.getElementById("addFrame").value = "none";
+    // document.getElementById("addCapacity").value = " ";
     document.getElementById("price").value = "";
     document.getElementById("stock").value = 1;
   };

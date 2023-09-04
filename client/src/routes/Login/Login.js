@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const LoginRoute = () => {
+  sessionStorage.removeItem("JWT");
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const registered = queryParams.get("registered");

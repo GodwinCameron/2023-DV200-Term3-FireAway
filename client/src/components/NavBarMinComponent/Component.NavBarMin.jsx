@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Style.NavBar.module.scss";
+import style from "./Style.NavBarMin.module.scss";
 import adminIcon from "../../assets/icons/admin.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 import profileIcon from "../../assets/icons/profile.svg";
@@ -10,7 +10,7 @@ import downIcon from "../../assets/icons/down-chevron.svg";
 import FAlogo from "../../assets/fireaway-logo.svg";
 import { Link } from "react-router-dom";
 
-const NavBarComponent = (props) => {
+const NavBarMinComponent = (props) => {
 
   return (
     <>
@@ -18,13 +18,6 @@ const NavBarComponent = (props) => {
         <div className={style.topSection}>
           <div className={style.logo}>
             <img alt="" src={FAlogo} />
-          </div>
-          <div className={style.searchBarArea}>
-            <input
-              className={style.searchBar}
-              placeholder="Search Keyword or Phrase"
-            ></input>
-            <img alt="" src={searchIcon} className={style.searchIcon} />
           </div>
           <div className={style.searchBarWidgets}>
             {props.admin && (
@@ -85,34 +78,10 @@ const NavBarComponent = (props) => {
               <img alt="" src={downIcon} />
             </div>
           </Link>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Revolvers
-            <img alt="" src={downIcon} />
-          </div>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Full Auto
-            <img alt="" src={downIcon} />
-          </div>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Semi-Auto
-            <img alt="" src={downIcon} />
-          </div>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Special Action
-            <img alt="" src={downIcon} />
-          </div>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Attachments
-            <img alt="" src={downIcon} />
-          </div>
-          <div className={[style.navTab, style.catagory].join(" ")}>
-            Ammunition
-            <img alt="" src={downIcon} />
-          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default NavBarComponent;
+export default NavBarMinComponent;

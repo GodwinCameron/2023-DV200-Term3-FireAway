@@ -9,7 +9,7 @@ const Wildcard = (props) => {
 
 
   const GoBack = () => {
-    window.history.back();
+    window.location.href = "/";
   }
 
 

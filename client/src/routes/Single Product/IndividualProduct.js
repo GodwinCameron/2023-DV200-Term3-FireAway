@@ -31,6 +31,7 @@ const IndividualProduct = (props) => {
 
 
   useEffect(() => {
+    if (productId.length === 24) {
     if (productType === "rifle") {
       axios
         .get(`http://localhost:5000/api/rifle/${productId}`)
@@ -71,6 +72,9 @@ const IndividualProduct = (props) => {
           console.log(err);
         });
     }
+  } else {
+    setFoundProduct(false);
+  }
   }, []);
 
   // const admin = props.admin;

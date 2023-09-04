@@ -1,0 +1,47 @@
+@import "../../styles.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+.main {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  align-items: center;
+  font-size: 12px;
+  .cartBox{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    margin-left: 3vw;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid $palette-1;
+    border-radius: 5px;
+    .cartTitleSection{
+      color: $palette-1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-family: "Antonio";
+      padding-bottom: 1vh;
+    }
+    .cartContent{
+      height: 90%;
+      width: 95%;
+      border: 0px solid $palette-2;
+      border-top-width: 1px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.4vh;
+      p{
+        margin-bottom: 0.6vh;
+      }
+      .textSize{
+        font-size: 12px;
+      }
+    }
+  }
+}
