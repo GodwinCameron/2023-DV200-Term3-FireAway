@@ -17,7 +17,7 @@
 <p align="center">
 
   <a href="https://github.com/GodwinCameron/2023-DV200-Term3-FireAway">
-    <img src="2023-DV200-Term3-FireAway/client/src/assets/fireaway-logo.svg" alt="Logo" width="140" height="140">
+    <img src="client/src/assets/fireaway-logo.svg" alt="Logo" width="140" height="140">
   </a>
   
   <h3 align="center">FireAway Store!</h3>
