@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import ShotgunsRoute from './routes/Shotguns/Shotguns';
 import Wildcard from './routes/Wildcard/Wildcard';
 import Cart from './routes/Cart/Cart';
+import Checkout from './routes/Checkout/Checkout';
 
 function App() {
  const [admin, setAdmin] = useState(false);
@@ -50,6 +51,7 @@ function App() {
         <Route path="/product" element={<IndividualProduct admin={admin} user={user} />}/>
         <Route path="/cart" element={<Cart admin={admin} user={user}/>}/>
         <Route path="*" element={<Wildcard admin={admin} user={user}/>}/>
+        <Route path="/checkout" element={<Checkout admin={admin} user={user}/>}/>
       </Routes>
     </BrowserRouter>);
 }

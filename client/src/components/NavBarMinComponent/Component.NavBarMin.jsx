@@ -12,13 +12,14 @@ import FAlogo from "../../assets/fireaway-logo.svg";
 import { Link } from "react-router-dom";
 
 const NavBarMinComponent = (props) => {
-
   return (
     <>
       <div className={style.main}>
         <div className={style.topSection}>
           <div className={style.logo}>
-            <img alt="" src={FAlogo} />
+            <Link to="/">
+              <img alt="" src={FAlogo} />
+            </Link>
           </div>
           <div className={style.searchBarWidgets}>
             {props.admin && (

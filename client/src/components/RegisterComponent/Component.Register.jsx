@@ -14,6 +14,15 @@ const RegisterComponent = () => {
 
   const CreateUser = async (e) => {
     e.preventDefault();
+    if (
+      document.getElementById("password").value === "" ||
+      document.getElementById("username").value === "" ||
+      document.getElementById("email").value === "" ||
+      document.getElementById("name").value === "" ||
+      document.getElementById("surname").value === ""
+    ) {
+      document.getElementsByClassName(style.message3)[0].style.display = "flex";
+    }
     const userInfo = {
       name: document.getElementById("name").value,
       surname: document.getElementById("surname").value,
@@ -32,17 +41,20 @@ const RegisterComponent = () => {
       .get("http://localhost:5000/api/getUser/" + userInfo.username)
       .then((response) => {
         if (response.data !== null) {
-          document.getElementsByClassName(
-            style.message2
-          )[0].style.display = "flex";
+          document.getElementsByClassName(style.message3)[0].style.display =
+            "none";
+          document.getElementsByClassName(style.message2)[0].style.display =
+            "flex";
         } else {
-          console.log("User does not exist, creating user");
           try {
             axios
               .post("http://localhost:5000/api/register", userInfo)
               .then(() => {
                 document.getElementsByClassName(
                   style.message2
+                )[0].style.display = "none";
+                document.getElementsByClassName(
+                  style.message3
                 )[0].style.display = "none";
                 document.getElementsByClassName(
                   style.message
@@ -64,12 +76,17 @@ const RegisterComponent = () => {
     <>
       <div className={style.main}>
         <form className={style.form} onSubmit={CreateUser}>
-          <div className={style.logo}><img src={logo} alt="logo"></img></div>
+          <div className={style.logo}>
+            <img src={logo} alt="logo"></img>
+          </div>
           <div className={style.message}>
             User Successfully Created! Proceeding to Sign in
           </div>
           <div className={style.message2}>
             Username already exists, please try again.
+          </div>
+          <div className={style.message3}>
+            Please fill in the form below to register.
           </div>
           <h1>
             Welcome to <span className={style.text}>FireAway!</span>

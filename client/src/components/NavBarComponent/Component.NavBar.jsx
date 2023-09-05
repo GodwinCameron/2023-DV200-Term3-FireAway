@@ -49,7 +49,7 @@ const NavBarComponent = (props) => {
             {props.user || props.admin ? (
               <Link to="/login">
                 <div className={style.navProfileIcon}>
-                  <img alt="" src={profileIcon} />
+                  <img className={style.loginIcon} alt="" src={profileIcon} />
                 </div>
               </Link>
             ) : (

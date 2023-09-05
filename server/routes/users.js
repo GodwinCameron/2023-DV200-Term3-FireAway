@@ -70,6 +70,20 @@ router.get("/api/getUser/:username", async (req, res) => {
   res.json(findUser);
 });
 
+// update user
+router.put('/api/user/:id', async (req, res) =>{
+  await UserSchema.updateOne({_id: req.params.id}, req.body)
+      .then(response => res.json(response))
+      .catch(error => res.status(500).json(error))
+})
+
+// delete user
+router.delete('/api/user/:id', async (req, res) =>{
+  await UserSchema.findByIdAndDelete(req.params.id)
+      .then(response => res.json(response))
+      .catch(error => res.status(500).json(error))
+})
+
 // verify token
 router.post("/api/verifytoken", async (req, res) => {
   const token = req.body.token;

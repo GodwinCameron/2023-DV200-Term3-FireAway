@@ -130,7 +130,7 @@
                 }
             }
             .navProfileIcon{
-                background-color: $palette-5;
+                background-color: $palette-1;
                 transition: 500ms;
                 max-height: 4vh;
                 min-height: 4vh;
@@ -139,7 +139,8 @@
                 align-items: center;
                 justify-content: center;
                 .loginIcon{
-                    scale: 120%;
+                    scale: 110%;
+                    filter: invert(100%);
                 }
                 img{
                     scale: 80%;

@@ -23,7 +23,8 @@
 
   .cartBox{
     width: 40%;
-    height: 90%;
+    height: fit-content;
+    max-height: 90vh;
     display: flex;
     margin-left: 3vw;
     flex-direction: column;
@@ -43,7 +44,7 @@
       text-transform: uppercase;
     }
     .cartContent{
-      height: 90%;
+      height: 100%;
       width: 95%;
       border: 0px solid $palette-2;
       border-top-width: 1px;
@@ -66,8 +67,39 @@
     height: 10%;
     transition: all 500ms;
     display: flex;
+    margin-bottom: 1vh;
     &:hover{
       background-color: rgb(255,255,255);
+    }
+    .totalEnd{
+      display: flex;
+      margin-left: auto;
+      flex-direction: column;
+      .checkoutBtn{
+        display: flex;
+        background-color: $palette-1;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.5vh;
+        color: white;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto;
+        margin-bottom: 0.4vh;
+        margin-left: auto;
+        margin-right: 0.2VW;
+        cursor: pointer;
+      }
+      .totalNumber{
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: 0.2vw;
+        margin-top: 1.5vh;
+        font-weight: bold;
+        font-size: 14px;
+      }
     }
   }
 }
