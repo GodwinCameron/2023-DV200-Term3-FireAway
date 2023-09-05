@@ -12,6 +12,7 @@ const CartItemComponent = () => {
     const newStyle = {
       height: isExpanded ? "4vh" : "12vh",
       fontSize: isExpanded ? "12px" : "16px",
+      cursor: isExpanded ? "zoom-in" : "zoom-out",
     };
     setDivStyle(newStyle);
   };

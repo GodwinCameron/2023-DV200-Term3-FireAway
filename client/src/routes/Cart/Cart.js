@@ -12,6 +12,7 @@ const Cart = (props) => {
     <>
       <NavBarMinComponent admin={admin} user={user} />
       <div className={style.main}>
+        <div className={style.backgroundFilter}>
         <div className={style.cartBox}>
           <div className={style.cartTitleSection}>
             <h1>Your Cart:</h1>
@@ -25,7 +26,11 @@ const Cart = (props) => {
             <CartItemComponent />
             <CartItemComponent />
             <CartItemComponent />
+            <div className={style.totalBlock}>
+
+            </div>
           </div>
+        </div>
         </div>
       </div>
       {/* <FooterComponent /> */}

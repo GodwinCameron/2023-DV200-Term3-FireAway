@@ -10,7 +10,7 @@ const AdminProducts = () => {
 
   const expand = () => {
     const expanded = {
-      height: "60vh",
+      height: "70vh",
     };
     setDivStyle(expanded);
     document.getElementById("products-heading").style.display = "none";

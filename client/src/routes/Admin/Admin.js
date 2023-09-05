@@ -15,7 +15,7 @@ const Admin = () => {
         <div className={style.content}>
           <AdminAdd />
           <AdminProducts />
-          {/* <AdminUsers /> */}
+          <AdminUsers />
         </div>
       </div>
   );

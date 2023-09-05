@@ -3,26 +3,27 @@
 .main{
     user-select: none;
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: -2.5vh;
     .topSection{
         width: 98vw;
-        height: 10vh;
+        height: 6vh;
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding-left: 2vw;
         gap: 15vw;
         .logo{
             width: 6vw;
-            height: 5vh;
+            height: 4vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1vh;
             img{
-                scale: 4%;
+                scale: 3%;
             }
         }
         .searchBarArea{
@@ -169,11 +170,10 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding-left: 4vw;
-        gap: 3vw;
-        border: 1px solid gray;
-        border-width: 0;
+        gap: 2vw;
+        border: 0px solid gray;
         border-bottom-width: 1px;
+        justify-content: center;
         .navTab{
             width: 6vw;
             height: 6vh;
@@ -212,4 +212,11 @@
             filter: brightness(0);
         }
     }
+}
+.minHome{
+    scale: 0.5;
+    margin-left: -0.5vw;
+}
+.minLog{
+    scale: 0.9;
 }
