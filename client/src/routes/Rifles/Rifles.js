@@ -3,9 +3,11 @@ import NavBarComponent from "../../components/NavBarComponent/Component.NavBar";
 import ProductCardComponent from "../../components/ProductCardComponent/Component.ProductCard";
 import "../../styles.scss"
 import style from "./Style.Rifles-Route.module.scss";
+import FooterComponent from "../../components/FooterComponent/Component.Footer";
 
 const RiflesRoute = (props) => {
     const admin = props.admin;
+    const user = props.user;
     const [products, setProducts] = React.useState([]);
 
     React.useEffect(() => {
@@ -22,7 +24,7 @@ const RiflesRoute = (props) => {
 
 
     return(<>
-        <NavBarComponent admin={admin} />
+        <NavBarComponent admin={admin} user={user}/>
         <p className={style.text}>Our Rifle stock:</p>
         <div className={style.productArea}>
             {products.map((product, index) => {
@@ -30,6 +32,7 @@ const RiflesRoute = (props) => {
             })}
 
         </div>
+        <FooterComponent />
     </>)
 }
 

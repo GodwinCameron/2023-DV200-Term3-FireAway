@@ -321,6 +321,14 @@
     display: flex;
     align-items: center;
 }
+.related{
+  font-family: 'Antonio';
+  color: rgb(80, 80, 80);
+  margin-top: 1vh;
+}
+.relatedProducts{
+  display: flex;
+}
 .tall{
     margin-bottom: 5vh;
 }
@@ -328,4 +336,27 @@
     min-width: 40px;
     margin-left: -2.7vw;
     margin-top: -29vh;
+}
+.inputLong{
+  outline: 0;
+    border: 0;
+    background-color: rgb(248, 248, 248);
+    height: 100%;
+    border-radius: 6px;
+    color: black;
+    width: 60%;
+    font-family: "DM Sans";
+    &:focus {
+      box-shadow: inset 1px 1px 15px -10px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.updateLong{
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  width: 100%;
+  align-items: center;
+  gap: 0.2vw;
+  flex-wrap: wrap;
 }

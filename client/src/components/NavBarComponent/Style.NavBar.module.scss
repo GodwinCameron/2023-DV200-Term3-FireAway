@@ -14,7 +14,7 @@
         flex-direction: row;
         align-items: center;
         padding-left: 2vw;
-        gap: 15vw;
+        gap: 5vw;
         .logo{
             width: 12vw;
             height: 7vh;
@@ -66,6 +66,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-left: auto;
             .navAdminIcon{
                 transition: 500ms;
                 background-color: #48dafb85;

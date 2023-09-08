@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const pistolRoute = require('./routes/pistols')
 const userRoute = require('./routes/users')
 const rifleRoute = require('./routes/rifles')
+const orderRoute = require('./routes/orders')
+const shotgunRoute = require('./routes/shotguns')
 
 require('dotenv/config')
 
@@ -20,6 +22,9 @@ app.use(express.urlencoded({extended: false}))
 app.use(pistolRoute)
 app.use(userRoute)
 app.use(rifleRoute)
+app.use(orderRoute)
+app.use(shotgunRoute)
+
 
 
 mongoose.connect(process.env.DB_CONNECTION, {

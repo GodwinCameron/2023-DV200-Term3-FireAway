@@ -8,13 +8,15 @@ import { useLocation } from "react-router-dom";
 import adminEdit from "../../assets/icons/edit.svg";
 import adminDelete from "../../assets/icons/delete.svg";
 import adminUpdate from "../../assets/icons/tick.svg";
-import axios from "axios";
+import axios, { Axios } from "axios";
+import ProductCardComponent from "../ProductCardComponent/Component.ProductCard";
 
 const Product = (props) => {
   const admin = props.admin;
   const user = props.user;
 
   const [productData, setProductData] = useState([]);
+  const [relatedProducts, setrelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState(1);
   const [isEditingPrice, setIsEditingPrice] = useState(false);
@@ -33,6 +35,7 @@ const Product = (props) => {
   });
   const [updatedImage, setUpdatedImage] = useState(productData.image);
 
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const productId = queryParams.get("id");
@@ -49,18 +52,31 @@ const Product = (props) => {
         console.log(err);
         setLoading(false);
       });
+    fetch("http://localhost:5000/api/" + productType + "s")
+    .then((response) => response.json())
+      .then((data) => {
+        const limitedData = data.slice(0, 3);
+        setrelatedProducts(limitedData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-let productImage;
+  let productImage;
 
-if (loading) {
-  productImage = loadingGif;
-} else if (!productData.image) {
-  productImage =
-    productType === "rifle" ? rifle : productType === "pistol" ? pistol : shotgun;
-} else {
-  productImage = productData.image;
-}
+  if (loading) {
+    productImage = loadingGif;
+  } else if (!productData.image) {
+    productImage =
+      productType === "rifle"
+        ? rifle
+        : productType === "pistol"
+        ? pistol
+        : shotgun;
+  } else {
+    productImage = productData.image;
+  }
 
   const editingPrice = () => {
     setIsEditingPrice(!isEditingPrice);
@@ -88,20 +104,23 @@ if (loading) {
   };
 
   const handleDelete = () => {
-    const confirmed = window.confirm("Are you sure you want to delete this product?");
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
     if (confirmed) {
-    axios
-      .delete("http://localhost:5000/api/" + productType + "/" + productId)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    // window.location.href = "/rifles";
-    window.location.reload();} else {
-        return;
-        }
+      axios
+        .delete("http://localhost:5000/api/" + productType + "/" + productId)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      // window.location.href = "/rifles";
+      window.location.reload();
+    } else {
+      return;
+    }
   };
 
   const updatePrice = (e) => {
@@ -160,7 +179,6 @@ if (loading) {
         image: updatedImage,
       })
       .then((response) => {
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -168,21 +186,40 @@ if (loading) {
     setIsEditingImage(!isEditingImage);
     window.location.reload();
   };
-  //   const updatePrice = (e) => {
-  //     e.preventDefault();
-  //     axios
-  //       .put("http://localhost:5000/api/rifle/" + productId, {
-  //         price: updatedPrice,
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //     setIsEditingPrice(!isEditingPrice);
-  //     window.location.reload();
-  //   };
+  const updateDescript = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:5000/api/" + productType + "/" + productId, {
+        description: updatedImage,
+      })
+      .then((response) => {
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setIsEditingDescription(!isEditingDescription);
+    window.location.reload();
+  };
+
+
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    const product = {
+      id: productData._id,
+      quant: currentValue,
+      currentStock: productData.stock,
+      type: productType,
+    }
+    if (cart === null) {
+      const newCart = [product];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      console.log(newCart);
+    } else {
+      const newCart = [...cart, product];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      console.log(newCart);
+    }
+  }
 
   return (
     <>
@@ -241,7 +278,7 @@ if (loading) {
               </div>
             )}
             {productData.stock > 0 ? (
-              <p className={style.inStock}>{productData.stock}{" "}In Stock</p>
+              <p className={style.inStock}>{productData.stock} In Stock</p>
             ) : (
               <p>Out of Stock</p>
             )}
@@ -363,13 +400,27 @@ if (loading) {
           </div>
           <div className={style.productDescription}>
             {admin && (
-              <div className={style.adminButton}>
+              <div onClick={editingDescription} className={style.adminButton}>
                 <img src={adminEdit} />
               </div>
             )}
-            <p className={style.widthFit}>
-              {productData.description}
-            </p>
+            {isEditingDescription === true ? (
+              <form className={style.updateLong} onSubmit={updateDescript}>
+                <textarea
+                  onChange={(e) => setUpdatedImage(e.target.value)}
+                  placeholder={productData.description}
+                  className={style.inputLong}
+                  type="text"
+                  defaultValue={productData.description}
+                ></textarea>
+                <div className={style.spacer} />
+                <button className={style.adminUpdate}>
+                  <img src={adminUpdate} />
+                </button>
+              </form>
+            ) : (
+            <p className={style.widthFit}>{productData.description}</p>
+            )}
           </div>
           <div className={style.productPrice}>
             {admin && (
@@ -412,7 +463,7 @@ if (loading) {
                 />
               </div>
               <div className={style.productAddToCart}>
-                <button className={style.button}>Add to Cart</button>
+                <button onClick={addToCart} className={style.button}>Add to Cart</button>
               </div>
             </div>
           ) : (
@@ -426,6 +477,14 @@ if (loading) {
               <p>Delete Product</p>
             </div>
           )}
+          <h2 className={style.related}>Check out some related products!</h2>
+          <div className={style.relatedProducts}>
+          {relatedProducts.map((relatedProducts, index) => {
+            return (
+              <ProductCardComponent key={index} productData={relatedProducts} />
+            );
+          })}
+          </div>
         </div>
         {/* create new button */}
       </div>

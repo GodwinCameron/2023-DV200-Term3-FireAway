@@ -82,14 +82,15 @@ const IndividualProduct = (props) => {
   // console.log(admin, user);
   return (
     <>
-      <NavBarComponent admin={admin} />
+      <NavBarComponent admin={admin} user={user} />
       <div className={style.divider}>
         {" "}
         Now Viewing Product - <span className={style.span}>
           {productId}
         </span>{" "}
         All info regarding Product can be found below. Please{" "}
-        <span className={style.span2}> contact us </span> for any questions
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=200109@virtualwindow.co.za&su=FireAway+Query&body=Good+day,+Cameron!+Please+assist+me+regarding+the+'FireAway'+Store."
+            target="_blank"><span className={style.span2}> contact us </span></a> for any questions
         regarding Product. This product can be found again under the appropriate
         section: RIFLES&#10095; SEMI-AUTOMATIC&#10095; 5.56x45MM
       </div>

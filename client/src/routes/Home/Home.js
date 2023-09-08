@@ -6,6 +6,7 @@ import "./Style.Home-Route.module.scss";
 import SecondaryNav from "../../components/SecondaryNav/Component.SecondaryNav";
 import ImageMenu from "../../components/ImageMenuComponent/Component.ImageMenu";
 import AdminHeader from "../../components/AdminHeaderComponent/Component.AdminHeader";
+import HomeComponent from "../../components/HomeComponent/Component.Home";
 
 const HomeRoute = (props) => {
 
@@ -20,6 +21,8 @@ const HomeRoute = (props) => {
         <ImageSlider />
         <SecondaryNav />
         <ImageMenu />
+        <br/>
+        <HomeComponent />
         <FooterComponent />
     </>)
 }

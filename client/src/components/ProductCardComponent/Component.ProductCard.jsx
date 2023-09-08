@@ -12,30 +12,29 @@ const ProductCardComponent = (props) => {
   const product = props.productData;
   const [divStyle, setDivStyle] = useState({});
 
-  var ProductThumbnail = product.thumbnail;
-  if (product.thumbnail === undefined) {
-    ProductThumbnail = product.image;
-  }
+
   if (product.capacity !== undefined) {
-    if (product.image === undefined || product.image === "") {
-      ProductThumbnail = rifleIcon;
-    }
     var productType = "rifle";
+    var ProductThumbnail = rifleIcon;
+  } else if (product.tubemag) {
+    var productType = "shotgun";
+    var ProductThumbnail = ShotgunIcon;
   } else {
-    if (product.calibre === "12 Gauge") {
-      if (product.image === undefined) {
-        var ProductThumbnail = ShotgunIcon;
-      }
-      var productType = "shotgun";
-    } else {
-      if (product.image === undefined) {
-        var ProductThumbnail = PistolIcon;
-      }
-      var productType = "pistol";
-    }
+    var productType = "pistol";
+    var ProductThumbnail = PistolIcon;
   }
 
+  if (product.image) {
+    ProductThumbnail = product.image;    
+  }
+  if (product.thumbnail) {
+    ProductThumbnail = product.thumbnail;
+  }
+
+
   var formattedPrice = parseInt(product.price).toLocaleString();
+
+
 
   return (
     <Link
@@ -59,12 +58,15 @@ const ProductCardComponent = (props) => {
           R<span id="numberDisplay">{formattedPrice}.00</span>
         </div>
         <div className={style.productDescription}>
-          Good gun, yes go buy now! go pew pew, yes yes nice!
+          Bringing you one of FireAway's finest! We assure high quality and
+          durability
         </div>
         <div className={style.buttonArea}>
+          {props.productData.stock > 0 ? (
           <div className={[style.button, style.cartBtn].join(" ")}>
             <img alt="" src={cartIcon} />
           </div>
+          ) : null}
           <div className={[style.button, style.heartBtn].join(" ")}>
             <img alt="" src={heartIcon} />
           </div>

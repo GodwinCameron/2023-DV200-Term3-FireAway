@@ -4,6 +4,7 @@ import FooterComponent from "../../components/FooterComponent/Component.Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import FooterMinComponent from "../../components/FooterMinComponent/Component.FooterMin";
 
 const LoginRoute = () => {
   sessionStorage.removeItem("JWT");
@@ -97,7 +98,7 @@ const LoginRoute = () => {
           <p>Or</p>
           <div onClick={ToHome} className={style.noLogin}>Return home without Login</div>
       </div>
-      <FooterComponent />
+      <FooterMinComponent />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Style.NavBar.module.scss";
 import adminIcon from "../../assets/icons/admin.svg";
 import cartIcon from "../../assets/icons/cart.svg";
@@ -11,6 +11,17 @@ import FAlogo from "../../assets/fireaway-logo.svg";
 import { Link } from "react-router-dom";
 
 const NavBarComponent = (props) => {
+  const [cartDataAmount, setCartDataAmount] = useState(0);
+
+
+  useEffect(() => {
+    const cartData = localStorage.getItem("cart");
+    const cartDataParsed = JSON.parse(cartData);
+    if (cartDataParsed) {
+      setCartDataAmount(cartDataParsed.length);
+    }
+  }
+  , [localStorage.getItem("cart")]);
 
   return (
     <>
@@ -26,6 +37,7 @@ const NavBarComponent = (props) => {
             ></input>
             <img alt="" src={searchIcon} className={style.searchIcon} />
           </div>
+          {props.user && <p>Welcome {props.user.name}!{" "}Your wallet:R{props.user.wallet}</p>}
           <div className={style.searchBarWidgets}>
             {props.admin && (
               <Link to="/admin">
@@ -42,7 +54,7 @@ const NavBarComponent = (props) => {
                 </div>
               </Link>
                 <div id="nav_cart_items" className={style.cartItems}>
-                  23
+                 {cartDataAmount}
                 </div>
               </>
             ) : null}
