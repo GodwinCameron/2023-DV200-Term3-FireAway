@@ -58,8 +58,8 @@ Browsing, purchasing and Admin management for a full MERN stack e-commerce webap
     - [Implementation Process](#implementation-process)
         - [Highlights](#highlights)
         - [Challenges](#challenges)
-- [Final Outcome](#final-outcome)
-    - [Video Demonstration](#video-demonstration)
+- [Final Outcome](#-final-outcome)
+    - [Video Demonstration](#-video-demonstration)
 - [Conclusion](#conclusion)
 - [License](#license)
 - [Contact](#contact)
@@ -160,7 +160,7 @@ Future functionality that I would hope to see come to this project.
 - Additions to the current error handling.
 
 
-## Final Outcome
+## 💣 Final Outcome
 
 ### 📸 Mockups
 
