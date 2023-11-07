@@ -51,10 +51,10 @@ Browsing, purchasing and Admin management for a full MERN stack e-commerce webap
 - [Getting Started](#-getting-started)
     - [How to install](#how-to-install)
 - [Features and Functionality](#-features-and-functionality)
-- [Concept Process](#concept-process)
+- [Concept Process](#-concept-process)
     - [Ideation](#ideation)
     - [Wireframes](#wireframes)
-- [Development Process](#development-process)
+- [Development Process](#-development-process)
     - [Implementation Process](#implementation-process)
         - [Highlights](#highlights)
         - [Challenges](#challenges)
@@ -102,7 +102,7 @@ This app allows you to Create, Read, Update, and Delete products, user/customers
     - Super users/Admins may do all that a normal user can, access the admin route, change stock values, alter products in any way (image, cost, description etc.), add entirely new products, remove existing products from the store, delete other users, deny non-super user requests, and a few other minor privileges over a normal user.
 
 
-## Concept Process
+## 📈 Concept Process
 
 While exploring the MERN stack, we as students were tasked with creating a fully working system to manage e-commerce related processes. This began with ideation of a userflow diagram:
 
@@ -120,7 +120,7 @@ While exploring the MERN stack, we as students were tasked with creating a fully
 ###### _*NOTE!* While these wireframes were made by me, they were made with heavy inspiration from an existing design found at this webiste:_ [Safari Outdoor](https://safarioutdoor.co.za/) _I do not claim to own these designs, I merely recreated them from the ground up in my own capacity. NO ASSETS WERE 'REUSED' OR COPPIED FROM THE ORIGINAL SITE._
 
 
-## Development Process
+## 📲 Development Process
 
 The `Development Process` is the technical implementations and functionality done for the app.
 
@@ -162,7 +162,7 @@ Future functionality that I would hope to see come to this project.
 
 ## Final Outcome
 
-### Mockups
+### 📸 Mockups
 
 
 ![image1](./Screenshots/1.JPG)
@@ -173,7 +173,7 @@ Future functionality that I would hope to see come to this project.
 
 
 
-### Video Demonstration
+### 🎥Video Demonstration
 
 [![Watch the video](https://static.vecteezy.com/system/resources/previews/027/245/458/non_2x/multimedia-video-player-frame-template-footage-display-live-video-streaming-broadcasting-illustration-vector.jpg)](https://youtu.be/ZLz7wc-EAZA)
 
@@ -186,27 +186,27 @@ Future functionality that I would hope to see come to this project.
 
 <!-- AUTHORS -->
 
-## Author
+## 🖊 Author
 - **Cameron Godwin** - [Github](https://github.com/GodwinCameron)
 
 
 <!-- LICENSE -->
 
-## License
+## 📜 License
 
 Distributed under the MIT License. See `LICENSE` for more information.\
 
 <!-- LICENSE -->
 
-## Contact
+## 💌 Contact
 **Cameron Godwin** - [200109@virtualwindow.co.za](mailto:200109@virtualwindow.co.za) 
 - **Project Link** - https://github.com/GodwinCameron/2023-DV200-Term3-FireAway
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## Acknowledgements
+## 🏅 Acknowledgements
 
 
 - [Figma](https://www.figma.com/)
-<!-- - [Lecturer](https://github.com/Tsungai) -->
+- [Lecturer](https://github.com/Tsungai)
 - [Flexy Boxes](https://the-echoplex.net/flexyboxes/)
