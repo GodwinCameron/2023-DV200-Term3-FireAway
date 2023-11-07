@@ -112,7 +112,7 @@ This app allows you to Create, Read, Update, and Delete products, user/customers
 ## Concept Process
 
 While exploring the MERN stack, we as students were tasked with creating a fully working system to manage e-commerce related processes. This began with ideation of a userflow diagram:
-![diagram1](./Work/Dataflow/flow.png)
+![diagram1](./Work/Dataflow/flow.jpg)
 
 
 
