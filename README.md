@@ -120,9 +120,9 @@ While exploring the MERN stack, we as students were tasked with creating a fully
 
 ### Wireframes
 
-![image1](.Work/Wireframes/image 1.png)
-![image2](.Work/Wireframes/image 2.png)
-![image3](.Work/Wireframes/image 3.png)
+![image1](./Work/Wireframes/image-1.png)
+![image2](./Work/Wireframes/image-2.png)
+![image3](./Work/Wireframes/image-3.png)
 
 
 ## Development Process
