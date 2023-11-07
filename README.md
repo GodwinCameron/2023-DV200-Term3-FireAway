@@ -287,10 +287,10 @@ Future functionality that I would hope to see come to this project.
 ### Mockups
 
 
-![image4](images/4.JPG)
-![image7](images/3.JPG)
-![image5](images/5.JPG)
-![image6](images/6.png)
+![image1](./Screenshots/1.JPG)
+![image2](./Screenshots/2.JPG)
+![image3](./Screenshots/3.JPG)
+![image4](./Screenshots/4.JPG)
 <br>
 
 
